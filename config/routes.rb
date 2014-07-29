@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'communities/1/show'
+  root to: redirect('/communities/1')
 
   resources :communities, only: [:show]
   resources :restaurants, except: [:index]
