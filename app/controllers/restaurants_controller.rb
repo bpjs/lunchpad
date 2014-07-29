@@ -2,19 +2,19 @@ class RestaurantsController < ApplicationController
   before_action :get_restaurant, only: [:show, :edit, :update, :destroy]
 
   def show
-
-  end
-
-  def new
-
   end
 
   def create
-
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      redirect_to @restaurant
+    else
+      flash[:alert] = "Restaurant was not saved properly."
+      render 'communities/show'
+    end
   end
 
   def edit
-
   end
 
   def update
@@ -32,7 +32,7 @@ class RestaurantsController < ApplicationController
     end
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :category, :yelp_url, :address)
+      params.require(:restaurant).permit(:name, :category, :yelp_url, :address, :community_id)
     end
 
 end

@@ -1,0 +1,13 @@
+<h2><%= @restaurant.name %></h2>
+<%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
+<%= @restaurant.category %>
+<%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
+<ul> 
+  <% @restaurant.reviews.each do |review| %>
+    <li>
+      <%= review.text %> <%= review.rating %>
+      -<%= review.member.name %>
+    </li>
+  <% end %>
+  </ul>
+<p>Google map integration goes HERE </p>
