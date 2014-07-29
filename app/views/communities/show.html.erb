@@ -1,0 +1,9 @@
+<h1><%= @community.name %></h1>
+
+<!-- Map goes here -->
+
+<div>
+  <h3>Restaurants in your community</h3>
+  <%= render @community.restaurants %>
+  <%= link_to "Add a restaurant", new_restaurant_path %>
+</div>

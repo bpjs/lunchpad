@@ -28,7 +28,7 @@ class MembersController < ApplicationController
   private
 
     def get_member
-      @member = member.find(params[:id])
+      @member = Member.find(params[:id])
     end
 
     def member_params

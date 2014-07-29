@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
   private
 
     def get_review
-      @review = review.find(params[:id])
+      @review = Review.find(params[:id])
     end
 
     def review_params
