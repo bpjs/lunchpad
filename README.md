@@ -2,7 +2,7 @@
 
 ## Description
 
-Add a short description of your app.
+Lunch around you OBVI
 
 ## Screenshots
 
