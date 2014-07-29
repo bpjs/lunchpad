@@ -19,8 +19,8 @@ brandon.reviews.create(restaurant: sophies, rating: 5.0, text: "I would give it 
 brandon.reviews.create(restaurant: chipotle, rating: 3.5, text: "I like it alright.")
 brandon.reviews.create(restaurant: flavors, rating: 4.0, text: "I like Flavors.  They have quinoa.")
 
-brandon.reviews.create(restaurant: sophies, rating: 4.2, text: "A little sketched out by the meat.")
-brandon.reviews.create(restaurant: flavors, rating: 3.8, text: "My fallback lunch place.")
+peter.reviews.create(restaurant: sophies, rating: 4.2, text: "A little sketched out by the meat.")
+peter.reviews.create(restaurant: flavors, rating: 3.8, text: "My fallback lunch place.")
 
 jess.reviews.create(restaurant: chipotle, rating: 4.0, text: "Sometimes you just gotta go to Chipotle.")
 
