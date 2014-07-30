@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :members, except: [:index]
   resources :reviews, only: [:create, :edit, :update, :destroy]
 
+  get "yelp_call", to: "restaurants#yelp_call"
 end
