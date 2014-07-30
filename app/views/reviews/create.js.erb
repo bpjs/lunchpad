@@ -1,0 +1,6 @@
+<% if @review.save %>
+  $('#reviews').append("<%= j render @review %>");
+  $('#new_review')[0].reset();
+<% else %>
+  // TODO - add error fields and fill them out
+<% end %>

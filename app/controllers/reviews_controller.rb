@@ -6,13 +6,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create(review_params)
     @review.member = current_member
-    if @review.save
-      redirect_to(restaurant_path(@review.restaurant))
-    else
-      # TODO - make ajax!
-      flash[:alert] = "You messed up!!"
-      redirect_to(root_path)
-    end
   end
 
   def edit

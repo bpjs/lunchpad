@@ -4,7 +4,9 @@
 <%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
 
 <h3>Reviews:</h3>
-<%= render @restaurant.reviews %>
+<div id="reviews">
+  <%= render @restaurant.reviews %>
+</div>
 
 <% if member_signed_in? %>
   <h3>Add a review:</h3>
