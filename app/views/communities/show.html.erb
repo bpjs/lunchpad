@@ -7,6 +7,6 @@
   <%= render @community.restaurants %>
   <% if member_signed_in? %>
     <%= link_to "Add a restaurant", new_restaurant_path %>
-    <%= render partial: 'restaurants/form', locals: {restaurant: Restaurant.new(community_id: @community.id)} %>
+    <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
   <% end %>
 </div>
