@@ -1,3 +1,3 @@
-var $new_review = $('#new_review');
+var $new_review = $('#new_review form');
 $new_review.find('#error_explanation').remove();
 $new_review.prepend("<%= j render 'shared/errors', object: @review %>");
