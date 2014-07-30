@@ -1,0 +1,11 @@
+<h2> Hello <%= current_member.name%> </h2>
+
+<h3> You belong to the following communities: <%= @member.community.name %> </h3>
+
+<p> You have recommended/discouraged trying out the following restaurants: </p>
+  <% @member.reviews.each do |rev| %>
+    <ul>
+      <li> <%=  rev.restaurant.name %> : </li>
+      <p> <%=  rev.text %> </p>
+    </ul>
+  <% end %>
