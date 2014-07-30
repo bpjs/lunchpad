@@ -1,13 +1,15 @@
 class ReviewsController < ApplicationController
   before_action :get_review, only: [:edit, :update, :destroy]
 
+  before_action :authenticate_member!
+
   def create
     @review = Review.create(review_params)
     @review.member = current_member
     if @review.save
       redirect_to(restaurant_path(@review.restaurant))
     else
-      # TODO - make json!
+      # TODO - make ajax!
       flash[:alert] = "You messed up!!"
       redirect_to(root_path)
     end

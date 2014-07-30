@@ -6,7 +6,15 @@
 <h3>Reviews:</h3>
 <%= render @restaurant.reviews %>
 
-<h3>Add a review:</h3>
-<%= render partial: 'reviews/form', locals: {review: Review.new(restaurant_id: @restaurant.id)} %>
+<% if member_signed_in? %>
+  <h3>Add a review:</h3>
+  <%= render partial: 'reviews/form', locals: {review: Review.new(restaurant_id: @restaurant.id)} %>
+<% else %>
+  <h4><%= link_to 'Sign In', new_member_session_path %> or
+      <%= link_to 'Sign Up', new_member_registration_path %>
+      to add a review!
+  </h4>
+<% end %>
+
 
 <p>Google map integration goes HERE </p>
