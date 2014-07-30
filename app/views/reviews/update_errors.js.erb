@@ -1,0 +1,3 @@
+var $review_form = $('#review-' + <%= @review.id %> + ' form');
+$review_form.find('#error_explanation').remove();
+$review_form.prepend("<%= j render 'shared/errors', object: @review %>");
