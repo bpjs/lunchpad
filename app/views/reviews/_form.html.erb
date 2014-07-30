@@ -1,0 +1,25 @@
+<%= form_for(review, html: {class: "form-horizontal"}) do |f| %>
+
+  <%= f.hidden_field :restaurant_id %>
+
+  <div class="form-group">
+    <%= f.label :rating, class: "form-label col-sm-1" %>
+    <div class="col-sm-2">
+      <%= f.number_field :rating, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :text, "Body", class: "form-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_area :text, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-offset-1">
+      <%= f.button "Create", type: "submit", class: "btn btn-submit" %>
+    </div>
+  </div>
+
+<% end %>

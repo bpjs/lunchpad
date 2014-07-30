@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col-sm-10">
+    <h5><strong><%= "#{review.rating} -" %></strong> <%= link_to review.member.name, member_path(review.member) %></h5>
+    <div class="review-text"><%= review.text %></div>
+  </div>
+</div>

@@ -2,12 +2,11 @@
 <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
 <%= @restaurant.category %>
 <%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
-<ul> 
-  <% @restaurant.reviews.each do |review| %>
-    <li>
-      <%= review.text %> <%= review.rating %>
-      -<%= review.member.name %>
-    </li>
-  <% end %>
-  </ul>
+
+<h3>Reviews:</h3>
+<%= render @restaurant.reviews %>
+
+<h3>Add a review:</h3>
+<%= render partial: 'reviews/form', locals: {review: Review.new(restaurant_id: @restaurant.id)} %>
+
 <p>Google map integration goes HERE </p>
