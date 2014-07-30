@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730142054) do
+ActiveRecord::Schema.define(version: 20140730195757) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140730142054) do
 
   create_table "members", force: true do |t|
     t.string   "name"
-    t.integer  "community_id"
+    t.integer  "community_id",           default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
