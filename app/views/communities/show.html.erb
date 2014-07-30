@@ -1,10 +1,26 @@
 <h1><%= @community.name %></h1>
 
-<!-- Map goes here -->
+<div id="adiv">
 
-<div>
+<div id="map-canvas">
+</div>
+
   <h3>Restaurants in your community</h3>
   <%= render @community.restaurants %>
   <%= link_to "Add a restaurant", new_restaurant_path %>
   <%= render partial: 'restaurants/form', locals: {restaurant: Restaurant.new(community_id: @community.id)} %>
 </div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
+</script>
+<script type="text/javascript">
+  var community = {
+    latitude: <%= @community.latitude %>,
+    longitude: <%= @community.longitude %>
+  };
+  loadCommMap(community);
+</script>
+<style>
+  #map-canvas {height: 100%;}
+  #adiv {height: 375px; width: 375px;}
+</style>
