@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :get_restaurant, only: [:show, :edit, :update, :destroy]
 
   def show
+    @community = @restaurant.community
   end
 
   def create

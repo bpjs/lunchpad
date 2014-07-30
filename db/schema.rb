@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729193447) do
+ActiveRecord::Schema.define(version: 20140730195757) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140729193447) do
 
   create_table "members", force: true do |t|
     t.string   "name"
-    t.integer  "community_id"
+    t.integer  "community_id",           default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 20140729193447) do
     t.string   "name"
     t.string   "category"
     t.string   "yelp_url"
-    t.string   "address"
     t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "restaurants", ["community_id"], name: "index_restaurants_on_community_id"

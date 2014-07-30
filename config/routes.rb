@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :communities, only: [:show]
   resources :restaurants, except: [:index]
   resources :members, except: [:index]
-  resources :reviews, only: [:create, :update, :destroy]
+  resources :reviews, only: [:create, :edit, :update, :destroy]
 
 end

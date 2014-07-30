@@ -1,6 +1,4 @@
-<% if @review.save %>
-  $('#reviews').append("<%= j render @review %>");
-  $('#new_review')[0].reset();
-<% else %>
-  // TODO - add error fields and fill them out
-<% end %>
+$('#reviews').append("<%= j render @review %>");
+var $new_review = $('#new_review');
+$new_review[0].reset();
+$new_review.find('#error_explanation').remove();

@@ -1,0 +1,45 @@
+function loadRestMap(community, restaurant){
+  function findCenter(startCoords, endCoords){
+    return [(startCoords.k + endCoords.k)/2, (startCoords.B + endCoords.B)/2]
+  }
+
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var homeCoords = new google.maps.LatLng(community.latitude, community.longitude);
+  var restCoords = new google.maps.LatLng(restaurant.latitude, restaurant.longitude);
+  var mapCenter = findCenter(homeCoords, restCoords);
+
+  function initialize(){
+
+    directionsDisplay = new google.maps.DirectionsRenderer();
+
+    var mapOptions = {
+      center: new google.maps.LatLng(mapCenter[0],mapCenter[1]),
+      zoom: 16
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('directions-panel'));
+
+    var control = document.getElementById('control');
+
+  }
+
+  function calcRoute(){
+    var request = {
+      origin: homeCoords,
+      destination: restCoords,
+      travelMode: google.maps.TravelMode.WALKING
+    };
+    directionsService.route(request, function(response, status){
+      if(status==google.maps.DirectionsStatus.OK){
+        directionsDisplay.setDirections(response);
+      }
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', calcRoute);
+}

@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create(review_params)
     @review.member = current_member
+    render :errors if !@review.save
   end
 
   def edit
