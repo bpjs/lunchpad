@@ -10,42 +10,21 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body>
-  
-  <div class="container">
+  <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to "Back to the Community!", root_path, html: {class: "navbar-brand"} %>
-          <ul class="nav navbar-nav">
-            <% if member_signed_in? %>
-              <li><%= link_to "My Page", current_member %></li>
-              <li><%= link_to "Sign Out", destroy_member_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to "Sign In", new_member_session_path %></li>
-              <li><%= link_to "Sign Up", new_member_registration_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+    <%= render 'layouts/header' %>
 
-    </nav>
+    <div class="container">
 
-  </div>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
-  <div class="container">
+      <%= yield %>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <%= yield %>
-  </div>
-
-</body>
+    </div>
+  </body>
 </html>

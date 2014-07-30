@@ -14,4 +14,4 @@
 //= require communities/google_maps
 //= require restaurants/google_maps
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap.min

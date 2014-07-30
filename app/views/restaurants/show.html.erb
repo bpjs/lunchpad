@@ -2,14 +2,21 @@
 <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
 <%= @restaurant.category %>
 <%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
-<ul> 
-  <% @restaurant.reviews.each do |review| %>
-    <li>
-      <%= review.text %> <%= review.rating %>
-      -<%= review.member.name %>
-    </li>
-  <% end %>
-  </ul>
+
+<h3>Reviews:</h3>
+<div id="reviews">
+  <%= render @restaurant.reviews %>
+</div>
+
+<% if member_signed_in? %>
+  <h3>Add a review:</h3>
+  <%= render 'reviews/form', review: Review.new(restaurant_id: @restaurant.id) %>
+<% else %>
+  <h4><%= link_to 'Sign In', new_member_session_path %> or
+      <%= link_to 'Sign Up', new_member_registration_path %>
+      to add a review!
+  </h4>
+<% end %>
 <p>Map</p>
   <div id="adiv">
     <div id="map-canvas"></div>

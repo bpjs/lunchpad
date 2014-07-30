@@ -15,13 +15,13 @@ peter = flatiron.members.create(name: "Peter Glennon", email: "pg@foo.com", pass
 jess = flatiron.members.create(name: "Jess Rudder", email: "jr@foo.com", password: "password1234", password_confirmation: "password1234")
 simon = flatiron.members.create(name: "Simon Seroussi", email: "ss@foo.com", password: "password1234", password_confirmation: "password1234")
 
-brandon.reviews.create(restaurant: sophies, rating: 5.0, text: "I would give it a 5.")
-brandon.reviews.create(restaurant: chipotle, rating: 3.5, text: "I like it alright.")
-brandon.reviews.create(restaurant: flavors, rating: 4.0, text: "I like Flavors.  They have quinoa.")
+brandon.reviews.create(restaurant: sophies, rating: 5, text: "I would give it a 5.")
+brandon.reviews.create(restaurant: chipotle, rating: 3, text: "I like it alright.")
+brandon.reviews.create(restaurant: flavors, rating: 4, text: "I like Flavors.  They have quinoa.")
 
-peter.reviews.create(restaurant: sophies, rating: 4.2, text: "A little sketched out by the meat.")
-peter.reviews.create(restaurant: flavors, rating: 3.8, text: "My fallback lunch place.")
+peter.reviews.create(restaurant: sophies, rating: 4, text: "A little sketched out by the meat.")
+peter.reviews.create(restaurant: flavors, rating: 3, text: "My fallback lunch place.")
 
-jess.reviews.create(restaurant: chipotle, rating: 4.0, text: "Sometimes you just gotta go to Chipotle.")
+jess.reviews.create(restaurant: chipotle, rating: 4, text: "Sometimes you just gotta go to Chipotle.")
 
-simon.reviews.create(restaurant: chipotle, rating: 4.0, text: "They're super annoying (what's it called?).  Oh, the sneeze guard.  Assholes.")
+simon.reviews.create(restaurant: chipotle, rating: 4, text: "They're super annoying (what's it called?).  Oh, the sneeze guard.  Assholes.")
