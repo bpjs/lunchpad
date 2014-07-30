@@ -1,4 +1,5 @@
 var $review = $('#review-' + <%= @review.id %>);
+$review.children().hide();
 $review.hide();
-$review.html("<%= j render 'reviews/edit', review: @review %>");
+$review.append("<%= j render 'reviews/edit', review: @review %>");
 $review.slideDown();
