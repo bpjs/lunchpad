@@ -1,16 +1,20 @@
 <h1><%= @community.name %></h1>
 
-<div id="adiv">
+<div class="row">
+  <div id="community-map" class="col-sm-6">
+    <div id="map-canvas"></div>
+  </div>
 
-<div id="map-canvas">
-</div>
+  <div id="restaurant-list" class="col-sm-6">
+    <h2>Restaurants in your community</h2>
+    <%= render @community.restaurants %>
+  </div>
 
-  <h3>Restaurants in your community</h3>
-  <%= render @community.restaurants %>
-  <% if member_signed_in? %>
-    <%= link_to "Add a restaurant", new_restaurant_path %>
-    <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
-  <% end %>
+  <div id="new_restaurant_selection">
+    <% if member_signed_in? %>
+      <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
+    <% end %>
+  </div>
 </div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
@@ -22,7 +26,3 @@
   };
   loadCommMap(community);
 </script>
-<style>
-  #map-canvas {height: 100%;}
-  #adiv {height: 375px; width: 375px;}
-</style>

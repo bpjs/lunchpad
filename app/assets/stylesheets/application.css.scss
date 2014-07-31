@@ -14,6 +14,8 @@
  *= require bootstrap-theme.min
  *= require superhero.min
  *= require reviews
+ *= require restaurants
+ *= require communities
  *= require global
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
@@ -23,7 +25,6 @@
  */
 /* Some Style from the Bootstrap Default Theme */
 body {
-  padding-top: 70px;
   padding-bottom: 30px;
 }
 

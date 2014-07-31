@@ -1,11 +1,14 @@
+<%= form_tag("/search", method: "get", id: "restaurant_search") do %>
+  <%= hidden_field_tag "latitude", @community.latitude %>
+  <%= hidden_field_tag "longitude", @community.longitude %>
+  <%= label_tag(:name, "Restaurant Name:") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search for Restaurant") %>
+<% end %>
+
 <%= form_for restaurant do |f| %>
   <%= f.hidden_field :community_id %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-  <!-- Probably want to replace this when we have a better way to add restaurants -->
-  <%= f.label :yelp_url %>
-  <%= f.text_field :yelp_url %>
-  <%= f.submit %>
+  <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :latitude %>
+  <%= f.submit :id => 'create_restaurant' %>
 <% end %>

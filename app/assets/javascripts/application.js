@@ -13,5 +13,6 @@
 //= require jquery
 //= require communities/google_maps
 //= require restaurants/google_maps
+//= require restaurants/restaurant_finder
 //= require jquery_ujs
 //= require bootstrap.min

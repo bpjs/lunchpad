@@ -1,27 +1,43 @@
-<h2><%= @restaurant.name %></h2>
-<%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
-<%= @restaurant.category %>
-<%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
+<div class="row">
+  <div id="restaurant-info" class="col-sm-4">
+    <div>
+      <h1 id="name"><%= @restaurant.name %></h1>
+      <h2 id="category">(<%= @restaurant.category %>)</h2>
+    </div>
+    <div>
+      <h3 id="review-average"> <%= @restaurant.review_average %> / 5</h3>
+      <h4 id="yelp-link"><%= link_to "View on Yelp", "http://#{@restaurant.yelp_url}" %></h4>
+    </div>
+    <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
 
-<h3>Reviews:</h3>
-<div id="reviews">
-  <%= render @restaurant.reviews %>
+    <h3>Community Reviews:</h3>
+    <div id="reviews">
+      <%= render @restaurant.reviews %>
+    </div>
+  </div>
+
+  <div id="restaurant-map" class="col-sm-4">
+    <div id="map-canvas"></div>
+  </div>
+
+  <div id="directions-panel" class="col-sm-4"></div>
 </div>
 
+
+
+
+
+
 <% if member_signed_in? %>
-  <h3>Add a review:</h3>
-  <%= render 'reviews/form', review: Review.new(restaurant_id: @restaurant.id) %>
+  <%= render 'reviews/new', review: Review.new(restaurant_id: @restaurant.id) %>
 <% else %>
   <h4><%= link_to 'Sign In', new_member_session_path %> or
       <%= link_to 'Sign Up', new_member_registration_path %>
       to add a review!
   </h4>
 <% end %>
-<p>Map</p>
-  <div id="adiv">
-    <div id="map-canvas"></div>
-    <div id="directions-panel"></div>
-</div>
+
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
 </script>
 <script type="text/javascript">
@@ -35,46 +51,3 @@
   }
   loadRestMap(community, restaurant);
 </script>
-
-<style>
-  #map-canvas {height: 100%;}
-  #adiv {height: 375px; width: 750px;}
-  #panel{ position: absolute;
-          top: 5px;
-          left: 50%;
-          margin-left: -180px;
-          z-index: 5;
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #999;
-  }
-  #directions-panel{
-    height: 100%;
-    float: right;
-    width: 250px;
-    overflow: auto;
-  }
-  #map-canvas{
-    margin-right: 400px;
-  }
-  #control{
-    background: #fff;
-    padding: 5px;
-    font-size: 14px;
-    font-family: Arial;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-    display: none;
-  }
-  @media print {
-    #map-canvas {
-      height: 500px;
-      margin: 0;
-    }
-    #directions-panel {
-      float: none;
-      width: auto;
-    }
-  }
-
-</style>

@@ -1,4 +1,4 @@
-<div>
-  <h5><%= link_to restaurant.name, restaurant %></h5>
-  <p><%= restaurant.category %></p>
+<div id="restaurant-#{<%= restaurant.id %>}">
+  <h3 class="restaurant-name"><%= link_to restaurant.name, restaurant %></h3>
+  <h5 class="restaurant-category">(<%= restaurant.category %>)</h5>
 </div>

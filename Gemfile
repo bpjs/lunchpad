@@ -57,5 +57,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'yelp'
+gem 'figaro'
 
 gem "bootstrap-sass", "~> 3.1.1"

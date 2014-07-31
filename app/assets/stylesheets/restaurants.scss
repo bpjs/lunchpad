@@ -1,0 +1,28 @@
+#restaurant-map {
+  height: 400px;
+}
+
+#name {
+  display: inline-block;
+}
+
+#category {
+  margin-left: 15px;
+  display: inline-block;
+}
+
+#review-average {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+#yelp-link {
+  margin-left: 20px;
+  display:inline-block;
+}
+
+/* Reviews */
+
+#reviews div {
+  margin-top: 15px;
+}

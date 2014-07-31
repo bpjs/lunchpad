@@ -19,9 +19,20 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-2 col-sm-offset-1">
-      <%= f.button "Create", type: "submit", class: "btn btn-submit" %>
+    <div class="col-sm-2 col-sm-offset-1 btn-group">
+      <%= f.button submit_text, type: 'submit', class: "btn btn-submit" %>
+      <%= f.button "Cancel", id: "#{review.id}-cancel", class: "btn btn-danger" %>
     </div>
   </div>
 
+  <script type="text/javascript">
+    $('#' + <%= review.id %> + '-cancel').click(function(e) {
+      e.preventDefault();
+      var $reviewForm = $(this).closest('.review-form');
+      $reviewForm.siblings('div').show();
+      $reviewForm.remove();
+    });
+  </script>
+
 <% end %>
+
