@@ -13,7 +13,7 @@ $(document).ready(function(){
         append("<span data-lat='"+foundlat
         +"' data-long='"+foundlong+"'>"
         +rest_data['name']
-        +" - "+rest_data['location']['display_address'][0]+", "+rest_data['location']['display_address'][2]+"</span>")
+        +" - "+rest_data['location']['display_address'][0]+", "+rest_data['location']['display_address'][2]+"</span></br>")
       }
     });
   };
@@ -33,9 +33,8 @@ $(document).ready(function(){
               append("<span data-lat='"+response[i]['location']['coordinate']['latitude']
                 +"' data-long='"+response[i]['location']['coordinate']['longitude']+"'>"
                 +response[i]['name']
-                +" - "+response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2]+"</span>")            
+                +" - "+response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2]+"</span></br>")            
           }else if (response[i]['location']['address'] != undefined){
-            //findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2])
             findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2], response[i])
           }
         }
