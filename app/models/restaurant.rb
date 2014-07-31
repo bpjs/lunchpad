@@ -3,7 +3,11 @@ class Restaurant < ActiveRecord::Base
   has_many :reviews
 
   def review_average
-    ((reviews.average("rating") * 2).floor / 2.0).to_f
+    if reviews.length != 0
+      ((reviews.average("rating") * 2).floor / 2.0).to_f
+    else
+      "No reviews yet"
+    end
   end
 
 end

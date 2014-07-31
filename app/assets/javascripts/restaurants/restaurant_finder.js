@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#create_restaurant').hide();
+  $('#new_restaurant_form').hide();
 
   $("#new_restaurant_form").on('click', '.rest_choice', function(){
     $("#restaurant_name").val($(this).data('name'));
@@ -16,8 +16,7 @@ $(document).ready(function(){
       if (status == google.maps.GeocoderStatus.OK){
         foundlat = results[0].geometry.location.k;
         foundlong = results[0].geometry.location.B;
-        $("#new_restaurant_form").
-        append(
+        $("#new_restaurant_form").append(
           "<div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
           +"' data-long='"+foundlong+"'><span class='rest_name'>"
           +rest_data['name']+"</span>"
