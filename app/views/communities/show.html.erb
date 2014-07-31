@@ -28,7 +28,7 @@
   var restaurants = [];
   <% @community.restaurants.each do |restaurant| %>
     // Need to add restaurant.name back in once we figure out how to handle apostrophes
-    var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, "name"];
+    var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, '<%= restaurant.name %> '];
     restaurants.push(current_restaurant);
   <% end %>
   loadCommMap(community, restaurants)
