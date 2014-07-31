@@ -1,9 +1,25 @@
 $(document).ready(function(){
   $('#create_restaurant').hide();
 
+  var geocoder;
+  var map;
+  function findCoords(address, rest_data){
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': address}, function(results, status){
+      if (status == google.maps.GeocoderStatus.OK){
+        foundlat = results[0].geometry.location.k;
+        foundlong = results[0].geometry.location.B;
+        $("#new_restaurant_selection").
+        append("<span data-lat='"+foundlat
+        +"' data-long='"+foundlong+"'>"
+        +rest_data['name']
+        +" - "+rest_data['location']['display_address'][0]+", "+rest_data['location']['display_address'][2]+"</span>")
+      }
+    });
+  };
+
   $('#restaurant_search').on('submit', function(e){
     e.preventDefault();
-
 
     $.get( "/yelp_call?name=" 
       + $('#name').val()+"&latitude=" 
@@ -12,10 +28,16 @@ $(document).ready(function(){
       function( response ) {
         $('#name').val('')
         for(var i =0;i<response.length;i++){
-          //This is going to be a huge pain because not all restaurants have coordinates!!!
-          $("#new_restaurant_selection").
-          append("<span data-lat='"+response[i]['location']['coordinate']['latitude']+"'>"+response[i]['name']
-          +" - "+response[i]['location']['address'][0]+"</span>")
+          if(response[i]['location']['coordinate'] != undefined){
+              $("#new_restaurant_selection").
+              append("<span data-lat='"+response[i]['location']['coordinate']['latitude']
+                +"' data-long='"+response[i]['location']['coordinate']['longitude']+"'>"
+                +response[i]['name']
+                +" - "+response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2]+"</span>")            
+          }else if (response[i]['location']['address'] != undefined){
+            //findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2])
+            findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2], response[i])
+          }
         }
       }
     );
