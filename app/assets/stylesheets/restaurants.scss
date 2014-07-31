@@ -1,24 +1,38 @@
-#restaurant-map {
-  height: 400px;
-}
-
-#name {
-  display: inline-block;
-}
-
-#category {
-  margin-left: 15px;
-  display: inline-block;
-}
 
 #review-average {
-  margin-left: 10px;
   display: inline-block;
 }
 
 #yelp-link {
   margin-left: 20px;
   display:inline-block;
+}
+
+/* Maps/Directions */
+
+#map-directions-border {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: 2px solid #2c3e50;
+}
+
+#restaurant-map {
+  height: 400px;
+  margin: 10px 0px 10px 0px;
+}
+
+// Initially hide directions
+
+#directions-panel {
+  display:none;
+  max-height: 400px;
+  y-overflow: scroll;
+  margin: 10px 0px 10px 0px;
+}
+
+#directions-toggle {
+  margin: 5px 0px 5px 10px;
 }
 
 /* Reviews */

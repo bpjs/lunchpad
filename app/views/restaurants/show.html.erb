@@ -1,5 +1,5 @@
 <div class="row">
-  <div id="restaurant-info" class="col-sm-4">
+  <div id="restaurant-info" class="col-sm-8">
     <div>
       <h1 id="name"><%= @restaurant.name %></h1>
       <h2 id="category">(<%= @restaurant.category %>)</h2>
@@ -9,34 +9,42 @@
       <h4 id="yelp-link"><%= link_to "View on Yelp", "http://#{@restaurant.yelp_url}" %></h4>
     </div>
     <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
+  </div>
 
-    <h3>Community Reviews:</h3>
-    <div id="reviews">
-      <%= render @restaurant.reviews %>
+
+  <div id="map-directions-border" class="col-sm-4">
+    <div id="restaurant-map" class="row">
+      <div id="map-canvas"></div>
+    </div>
+    <div id="directions-panel" class="row"></div>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-3">
+        <button id="directions-toggle" class="btn btn-primary">Show Directions</button>
+      </div>
     </div>
   </div>
-
-  <div id="restaurant-map" class="col-sm-4">
-    <div id="map-canvas"></div>
-  </div>
-
-  <div id="directions-panel" class="col-sm-4"></div>
 </div>
 
+<div class="row">
+  <div id="reviews">
+    <h3>Community Reviews</h3>
+    <%= render @restaurant.reviews %>
+  </div>
+</div>
 
-
-
-
-
-<% if member_signed_in? %>
-  <%= render 'reviews/new', review: Review.new(restaurant_id: @restaurant.id) %>
-<% else %>
-  <h4><%= link_to 'Sign In', new_member_session_path %> or
-      <%= link_to 'Sign Up', new_member_registration_path %>
-      to add a review!
-  </h4>
-<% end %>
-
+<div class="row">
+  <div class="col-sm-12">
+    <% if member_signed_in? %>
+      <%= render 'reviews/new', review: Review.new(restaurant_id: @restaurant.id) %>
+    <% else %>
+      <h4>
+        <%= link_to 'Sign In', new_member_session_path %> or
+        <%= link_to 'Sign Up', new_member_registration_path %>
+        to add a review!
+      </h4>
+    <% end %>
+  </div>
+</div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
 </script>
@@ -50,4 +58,23 @@
     longitude: <%= @restaurant.longitude %>
   }
   loadRestMap(community, restaurant);
+
+  $(function() {
+    $('#directions-toggle').click(function() {
+      var $directions = $('#directions-panel');
+      var $map = $('#restaurant-map');
+      if ($directions.is(':visible')) { // Hide it
+        $directions.hide();
+        $map.show();
+        $(this).text('Show Directions');
+      } else {
+        $directions.show();
+        $map.hide();
+        $(this).text('Show Map');
+      }
+    });
+  });
+  function toggleDirections() {
+    $('#directions-panel div').toggle();
+  }
 </script>
