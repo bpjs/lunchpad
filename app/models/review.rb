@@ -7,4 +7,5 @@ class Review < ActiveRecord::Base
                                                  message: "must be between 0 and 5"
                                                 }
   validates :text, presence: true, length: {minimum: 10}
+
 end
