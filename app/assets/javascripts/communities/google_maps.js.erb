@@ -7,10 +7,10 @@ function loadCommMap(community, restaurants){
       zoom: 18
     };
 
-    // var image = '/local-lunch/public/communities/heart_icon.png';
+    var image = 'public/images/heart_icon.png';
     var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-    var marker = new google.maps.Marker({position: coords, map: map});
+    var marker = new google.maps.Marker({position: coords, map: map, icon:image});
 
     var restaurant_coords = restaurants;
     
@@ -25,8 +25,11 @@ function loadCommMap(community, restaurants){
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        console.log("Restaurant Id: " + restaurant_coords[i][3])
         return function() {
-          infowindow.setContent('<h1>' + restaurant_coords[i][2] + '</h1>');
+          infowindow.setContent('<a href="/restaurants/' + restaurant_coords[i][3] 
+            + '"><h3>' + restaurant_coords[i][2] 
+            + '</h3></a><a href="http://yelp.com">Yelp It Up!</a><br><p>Rating:</p>');
           infowindow.open(map, marker);
         }
       })(marker, i));
