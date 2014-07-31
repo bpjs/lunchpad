@@ -2,6 +2,7 @@
   <div id="restaurant-info" class="col-sm-8">
     <div>
       <h1 id="name"><%= @restaurant.name %></h1>
+      <h2 id="address"><%= @restaurant.address %></h2>
       <h2 id="category">(<%= @restaurant.category %>)</h2>
     </div>
     <div>
@@ -72,7 +73,4 @@
       }
     });
   });
-  function toggleDirections() {
-    $('#directions-panel div').toggle();
-  }
 </script>

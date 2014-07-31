@@ -4,17 +4,13 @@
 
   <%= f.hidden_field :restaurant_id %>
 
-  <div class="form-group">
-    <%= f.label :rating, class: "form-label col-sm-1" %>
-    <div class="col-sm-2">
-      <%= f.number_field :rating, class: "form-control" %>
-    </div>
-  </div>
+  
 
   <div class="form-group">
     <%= f.label :stars, class: "form-label col-sm-1" %>
     <div class="col-sm-2"> 
-    <div class="star_rating" class: "form-control"></div>
+    <div class="star_rating", class: "form-control"></div>
+    <%= f.hidden_field :rating %>
     </div>
   </div>
 
