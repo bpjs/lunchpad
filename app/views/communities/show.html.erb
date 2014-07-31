@@ -7,10 +7,11 @@
 
   <h3>Restaurants in your community</h3>
   <%= render @community.restaurants %>
-  <% if member_signed_in? %>
-    <%= link_to "Add a restaurant", new_restaurant_path %>
-    <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
-  <% end %>
+  <div id="new_restaurant_selection">
+    <% if member_signed_in? %>
+      <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
+    <% end %>
+  </div>
 </div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
