@@ -3,12 +3,12 @@
   <%= hidden_field_tag "longitude", @community.longitude %>
   <%= label_tag(:name, "Restaurant Name:") %>
   <%= text_field_tag(:name) %>
-  <%= submit_tag("Search for Restaurant") %>
+  <%= submit_tag("Search for Restaurant", :id=>'restaurant_search') %>
 <% end %>
 
-<%= form_for restaurant do |f| %>
+<%= form_for restaurant, html: {id: 'new_restaurant_form'} do |f| %>
   <%= f.hidden_field :community_id %>
-  <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :name %>
   <%= f.hidden_field :latitude %>
-  <%= f.submit :id => 'create_restaurant' %>
+  <%= f.hidden_field :longitude %>
 <% end %>
