@@ -1,4 +1,4 @@
-function loadCommMap(community){
+function loadCommMap(community, restaurants){
   function initialize(){
     var coords = new google.maps.LatLng(community.latitude, community.longitude);
 
@@ -7,11 +7,36 @@ function loadCommMap(community){
       zoom: 16
     };
 
+    // var image = '../app/assets/images/communities/heart_icon.png';
     var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
     var marker = new google.maps.Marker({position: coords, map: map});
 
-  }
+    var restaurant_coords = restaurants;
+    
+    var infowindow = new google.maps.InfoWindow();
 
+    var marker, i;
+
+    for (i = 0; i <= restaurant_coords.length-1; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(restaurant_coords[i][0], restaurant_coords[i][1]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent('<h1>' + restaurant_coords[i][2] + '</h1>');
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+  }
   google.maps.event.addDomListener(window, 'load', initialize)
+}
+
+function add_restaurants(map){
+  
+
 }
