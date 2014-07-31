@@ -19,7 +19,7 @@ $(document).ready(function(){
         foundlong = results[0].geometry.location.B;
         $("#new_restaurant_form").append(
           "<div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
-          +"' data-long='"+foundlong+"' data-category='"+response[i]['categories'][0][0]+"'><span class='rest_name'>"
+          +"' data-long='"+foundlong+"' data-category='"+rest_data['categories'][0][0]+"'><span class='rest_name'>"
           +rest_data['name']+"</span>"
           +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+", "+rest_data['location']['display_address'][2]+"</span></div>"           
         )
