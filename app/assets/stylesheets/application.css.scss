@@ -12,7 +12,7 @@
  *
  *= require bootstrap.min
  *= require bootstrap-theme.min
- *= require superhero.min
+ *= require journal-custom.min
  *= require reviews
  *= require restaurants
  *= require communities
@@ -26,6 +26,10 @@
 /* Some Style from the Bootstrap Default Theme */
 body {
   padding-bottom: 30px;
+}
+
+.navbar {
+  background-image: none;
 }
 
 .theme-dropdown .dropdown-menu {
