@@ -27,6 +27,7 @@ class RestaurantsController < ApplicationController
   def yelp_call
     coordinates = { latitude: params[:latitude], longitude: params[:longitude] }
     results = Yelp.client.search_by_coordinates(coordinates, { term: params[:name], limit: 5})
+    binding.pry
     render json: JSON.parse(results.to_json)["businesses"]
   end
 

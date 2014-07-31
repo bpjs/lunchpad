@@ -9,6 +9,7 @@
 <%= form_for restaurant, html: {id: 'new_restaurant_form'} do |f| %>
   <%= f.label "Please Choose one of the below restaurants" %>
   <%= f.hidden_field :community_id %>
+  <%= f.hidden_field :category %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :latitude %>
   <%= f.hidden_field :longitude %>
