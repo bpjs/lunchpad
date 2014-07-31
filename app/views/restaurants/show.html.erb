@@ -1,4 +1,5 @@
-<h2><%= @restaurant.name %></h2> <%= @restaurant.review_average %>
+<h2><%= @restaurant.name %></h2>
+<%= @restaurant.review_average %>
 <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
 <%= @restaurant.category %>
 <%= link_to "Yelp", "http://#{@restaurant.yelp_url}" %>
@@ -16,11 +17,14 @@
       to add a review!
   </h4>
 <% end %>
-<p>Map</p>
-  <div id="adiv">
+<div class="row">
+  <div id="restaurant-map" class="col-sm-6">
     <div id="map-canvas"></div>
-    <div id="directions-panel"></div>
+  </div>
+
+  <div id="directions-panel" class="col-sm-6"></div>
 </div>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
 </script>
 <script type="text/javascript">
@@ -34,46 +38,3 @@
   }
   loadRestMap(community, restaurant);
 </script>
-
-<style>
-  #map-canvas {height: 100%;}
-  #adiv {height: 375px; width: 750px;}
-  #panel{ position: absolute;
-          top: 5px;
-          left: 50%;
-          margin-left: -180px;
-          z-index: 5;
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #999;
-  }
-  #directions-panel{
-    height: 100%;
-    float: right;
-    width: 250px;
-    overflow: auto;
-  }
-  #map-canvas{
-    margin-right: 400px;
-  }
-  #control{
-    background: #fff;
-    padding: 5px;
-    font-size: 14px;
-    font-family: Arial;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-    display: none;
-  }
-  @media print {
-    #map-canvas {
-      height: 500px;
-      margin: 0;
-    }
-    #directions-panel {
-      float: none;
-      width: auto;
-    }
-  }
-
-</style>

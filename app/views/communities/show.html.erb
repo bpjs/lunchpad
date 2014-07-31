@@ -1,12 +1,15 @@
 <h1><%= @community.name %></h1>
 
-<div id="adiv">
+<div class="row">
+  <div id="community-map" class="col-sm-6">
+    <div id="map-canvas"></div>
+  </div>
 
-<div id="map-canvas">
-</div>
+  <div id="restaurants" class="col-sm-6">
+    <h3>Restaurants in your community</h3>
+    <%= render @community.restaurants %>
+  </div>
 
-  <h3>Restaurants in your community</h3>
-  <%= render @community.restaurants %>
   <div id="new_restaurant_selection">
     <% if member_signed_in? %>
       <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
@@ -23,7 +26,3 @@
   };
   loadCommMap(community);
 </script>
-<style>
-  #map-canvas {height: 100%;}
-  #adiv {height: 375px; width: 375px;}
-</style>
