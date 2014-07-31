@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :get_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :get_restaurant, only: [:show, :destroy]
 
   def show
     @community = @restaurant.community
@@ -15,19 +15,12 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
   end
 
   def yelp_call
     coordinates = { latitude: params[:latitude], longitude: params[:longitude] }
     results = Yelp.client.search_by_coordinates(coordinates, { term: params[:name], limit: 5})
-    binding.pry
     render json: JSON.parse(results.to_json)["businesses"]
   end
 

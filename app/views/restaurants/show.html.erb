@@ -8,9 +8,7 @@
       <h3 id="review-average"> <%= @restaurant.review_average %> / 5</h3>
       <h4 id="yelp-link"><%= link_to "View on Yelp", "http://#{@restaurant.yelp_url}" %></h4>
     </div>
-    <%= link_to "Edit Restaurant Info", edit_restaurant_path(@restaurant) %>
   </div>
-
 
   <div id="map-directions-border" class="col-sm-4">
     <div id="restaurant-map" class="row">
