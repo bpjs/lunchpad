@@ -17,3 +17,5 @@
 //= require restaurants/restaurant_finder
 //= require jquery_ujs
 //= require bootstrap.min
+//= require jquery.raty
+//= require star

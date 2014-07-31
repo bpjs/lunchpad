@@ -33,7 +33,7 @@ class MembersController < ApplicationController
 
     def member_params
       # TODO - fix please
-      params.require(:member).permit(:name, :email)
+      params.require(:member).permit(:name, :email, :community_id)
     end
 
 end

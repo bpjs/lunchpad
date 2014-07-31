@@ -5,8 +5,8 @@
     <div id="map-canvas"></div>
   </div>
 
-  <div id="restaurants" class="col-sm-6">
-    <h3>Restaurants in your community</h3>
+  <div id="restaurant-list" class="col-sm-6">
+    <h2>Restaurants in your community</h2>
     <%= render @community.restaurants %>
   </div>
 
@@ -24,5 +24,17 @@
     latitude: <%= @community.latitude %>,
     longitude: <%= @community.longitude %>
   };
-  loadCommMap(community);
+
+  var restaurants = [];
+  <% @community.restaurants.each do |restaurant| %>
+    // Need to add restaurant.name back in once we figure out how to handle apostrophes
+    var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, "name"];
+    restaurants.push(current_restaurant);
+  <% end %>
+  loadCommMap(community, restaurants)
 </script>
+
+<style>
+  #map-canvas {height: 100%;}
+  #adiv {height: 375px; width: 375px;}
+</style>

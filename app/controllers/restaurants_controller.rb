@@ -19,11 +19,9 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
-
   end
 
   def yelp_call
