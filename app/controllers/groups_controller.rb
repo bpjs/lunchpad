@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = @community.groups
-    @ungroupedRestaurants = @community.ungroupedRestaurants
   end
 
   def create

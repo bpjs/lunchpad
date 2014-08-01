@@ -6,8 +6,14 @@
       <%= f.hidden_field :community_id, value: community.id %>
 
       <div class="form-group">
-        <%= f.collection_select :restaurant_id, availableRestaurants, :id, :name,
+        <%= f.collection_select :restaurant_id, community.restaurants, :id, :name,
             {prompt: "Choose a Local Restaurant"}, {class: "form-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f. %>
+          <%= f.hidden_field :time %>
+        </span>
       </div>
 
       <div class="form-group">
@@ -15,4 +21,13 @@
       </div>
     <% end %>
   </div>
+
+  <script type="text/javascript">
+    var $timepicker = $('#timepicker');
+    $timepicker.timepicker({ 'scrollDefault': 'now' });
+    $timepicker.on('changeTime', function() {
+      console.log('change');
+      console.log($(this).val());
+    });
+  </script>
 </div>

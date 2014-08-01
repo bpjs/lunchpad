@@ -4,8 +4,6 @@
   <%= render @groups %>
 </div>
 
-<% unless @ungroupedRestaurants.empty? %>
-  <%= render 'form', community: @community, availableRestaurants: @ungroupedRestaurants %>
-<% else %>
-  <%# TODO: There should be the ability to create a restaurant from here!! %>
-<% end %>
+<%= render 'form', community: @community %>
+
+<%# TODO: There should be the ability to create a restaurant from here!! %>
