@@ -33,9 +33,9 @@ $(document).ready(function(){
     e.preventDefault();
     $('#restaurant_search').hide();
 
-    $.get( "/yelp_call?name=" 
-      + $('#name').val()+"&latitude=" 
-      + $('#latitude').val()+"&longitude=" 
+    $.get( '/yelp_call?name="' 
+      + $('#name').val().toString() +'"&latitude=' 
+      + $('#latitude').val()+'&longitude=' 
       + $('#longitude').val(), 
       function( response ) {
         $('#name').val('');
