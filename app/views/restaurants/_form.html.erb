@@ -13,11 +13,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Choose a Restaurant to Add to Your Community</h4>
       </div>
       <div class="modal-body">
         <%= form_for restaurant, html: {id: 'new_restaurant_form'} do |f| %>
-          <%= f.label "Choose a Restaurant to Add to Your Community" %>
           <%= f.hidden_field :community_id %>
           <%= f.hidden_field :yelp_url %>
           <%= f.hidden_field :address %>
@@ -26,9 +25,15 @@
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
         <% end %>
-        <table id="restaurant-list">
-          <th>Restaurant</th>
-          <th>Address</th>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Restaurant</th>
+              <th>Address</th>
+            </tr>
+          <thead>
+          <tbody id="rest-list">
+          </tbody>
         </table>
       </div>
       <div class="modal-footer">
@@ -37,3 +42,34 @@
     </div>
   </div>
 </div>
+
+
+<!-- <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table> -->
