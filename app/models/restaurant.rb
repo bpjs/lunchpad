@@ -14,4 +14,8 @@ class Restaurant < ActiveRecord::Base
     find_by(yelp_url: yelp_url)
   end
 
+  def self.by_average_rating_for_community(community_id)
+    where(community_id: community_id).joins("left outer join reviews on restaurants.id = reviews.restaurant_id").group(:id).order("AVG(reviews.rating) DESC")
+  end
+
 end
