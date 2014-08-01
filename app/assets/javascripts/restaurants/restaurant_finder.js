@@ -19,11 +19,12 @@ $(document).ready(function(){
       if (status == google.maps.GeocoderStatus.OK){
         foundlat = results[0].geometry.location.k;
         foundlong = results[0].geometry.location.B;
-        $("#new_restaurant_form").append(
-          "<div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
+        console.log(rest_data['name']);
+        $("tbody#rest-list").append(
+          "<tr class='rest_choice'><td><div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
           +"' data-long='"+foundlong+"' data-category='"+rest_data['categories'][0][0]+"' data-address='"+rest_data['location']['display_address'][0]+"' data-url='"+rest_data['url']+"'><span class='rest_name'>"
-          +rest_data['name']+"</span>"
-          +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+"</span></div>"           
+          +rest_data['name']+" - </span>"
+          +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+"</span></div></tr></td>"           
         )
       }
     });
@@ -33,9 +34,9 @@ $(document).ready(function(){
     e.preventDefault();
     $('#restaurant_search').hide();
 
-    $.get( '/yelp_call?name="' 
-      + $('#name').val().toString() +'"&latitude=' 
-      + $('#latitude').val()+'&longitude=' 
+    $.get( "/yelp_call?name=" 
+      + $('#name').val()+"&latitude=" 
+      + $('#latitude').val()+"&longitude=" 
       + $('#longitude').val(), 
       function( response ) {
         $('#name').val('');
