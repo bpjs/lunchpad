@@ -26,5 +26,14 @@
     </div>
   </div>
 
+  <script type="text/javascript">
+    $('.star-rating').raty({
+      click: function(score, evt){
+        var rating=score;
+        $('#review_rating').val(rating);
+      }
+    });
+  </script>
+
 <% end %>
 
