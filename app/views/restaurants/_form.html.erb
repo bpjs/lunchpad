@@ -13,11 +13,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Choose a Restaurant to Add to Your Community</h4>
       </div>
       <div class="modal-body">
         <%= form_for restaurant, html: {id: 'new_restaurant_form'} do |f| %>
-          <%= f.label "Choose a Restaurant to Add to Your Community" %>
           <%= f.hidden_field :community_id %>
           <%= f.hidden_field :yelp_url %>
           <%= f.hidden_field :address %>
@@ -25,6 +24,15 @@
           <%= f.hidden_field :name %>
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Restaurant     -     Address</th>
+              </tr>
+            </thead>
+            <tbody id="rest-list">
+            </tbody>
+          </table>
         <% end %>
       </div>
       <div class="modal-footer">
