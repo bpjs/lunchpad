@@ -4,16 +4,13 @@
 
   <%= f.hidden_field :restaurant_id %>
 
-  
-
   <div class="form-group">
     <%= f.label :stars, class: "form-label col-sm-1" %>
-    <div class="col-sm-2"> 
-    <div class="star_rating", class: "form-control"></div>
+    <div class="col-sm-2">
+    <div class="star-rating"></div>
     <%= f.hidden_field :rating %>
     </div>
   </div>
-
 
   <div class="form-group">
     <%= f.label :text, "Body", class: "form-label col-sm-1" %>
@@ -23,20 +20,11 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-2 col-sm-offset-1 btn-group">
+    <div class="col-sm-2 col-sm-offset-1 cancel-submit-buttons">
       <%= f.button submit_text, type: 'submit', class: "btn btn-primary" %>
       <%= f.button "Cancel", id: "#{review.id}-cancel", class: "btn btn-danger" %>
     </div>
   </div>
-
-  <script type="text/javascript">
-    $('#' + <%= review.id %> + '-cancel').click(function(e) {
-      e.preventDefault();
-      var $reviewForm = $(this).closest('.review-form');
-      $reviewForm.siblings('div').show();
-      $reviewForm.remove();
-    });
-  </script>
 
 <% end %>
 

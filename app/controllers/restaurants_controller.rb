@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
-  before_action :get_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :get_restaurant, only: [:show, :destroy]
+
+  before_action :authenticate_member!
 
   def show
     @community = @restaurant.community
@@ -10,18 +12,14 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to @restaurant
     else
-      flash[:alert] = "Restaurant was not saved properly."
+      flash.now[:alert] = "Restaurant was not saved properly."
       render 'communities/show'
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    @restaurant.destroy
+    redirect_to root_path, alert: "Restaurant deleted"
   end
 
   def yelp_call

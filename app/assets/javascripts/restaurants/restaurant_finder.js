@@ -6,6 +6,8 @@ $(document).ready(function(){
     $("#restaurant_latitude").val($(this).data('lat'));
     $("#restaurant_longitude").val($(this).data('long'));
     $("#restaurant_category").val($(this).data('category'));
+    $("#restaurant_yelp_url").val($(this).data('url'));
+    $("#restaurant_address").val($(this).data('address'));
     $("#new_restaurant_form").submit();
   });
 
@@ -19,9 +21,9 @@ $(document).ready(function(){
         foundlong = results[0].geometry.location.B;
         $("#new_restaurant_form").append(
           "<div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
-          +"' data-long='"+foundlong+"' data-category='"+rest_data['categories'][0][0]+"'><span class='rest_name'>"
+          +"' data-long='"+foundlong+"' data-category='"+rest_data['categories'][0][0]+"' data-address='"+rest_data['location']['display_address'][0]+"' data-url='"+rest_data['url']+"'><span class='rest_name'>"
           +rest_data['name']+"</span>"
-          +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+", "+rest_data['location']['display_address'][2]+"</span></div>"           
+          +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+"</span></div>"           
         )
       }
     });
@@ -43,9 +45,9 @@ $(document).ready(function(){
               $("#new_restaurant_form").
               append(
                 "<div class='rest_choice' data-name='"+response[i]['name']+"' data-lat='"+response[i]['location']['coordinate']['latitude']
-                +"' data-long='"+response[i]['location']['coordinate']['longitude']+"' data-category='"+response[i]['categories'][0][0]+"'><span class='rest_name'>"
+                +"' data-long='"+response[i]['location']['coordinate']['longitude']+"' data-category='"+response[i]['categories'][0][0]+"' data-address='"+response[i]['location']['display_address'][0]+"' data-url='"+response[i]['url']+"'><span class='rest_name'>"
                 +response[i]['name']+"</span>"
-                +"<span class='rest_addr'>"+response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2]+"</span></div>")            
+                +"<span class='rest_addr'>"+response[i]['location']['display_address'][0]+"</span></div>")            
           }else if (response[i]['location']['address'] != undefined){
             findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2], response[i])
           }
