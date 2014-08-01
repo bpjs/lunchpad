@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.existing_restaurant(params[:restaurant][:yelp_url]) || Restaurant.new(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else

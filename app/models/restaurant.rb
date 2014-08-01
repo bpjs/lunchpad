@@ -10,4 +10,8 @@ class Restaurant < ActiveRecord::Base
     end
   end
 
+  def self.existing_restaurant(yelp_url)
+    find_by(yelp_url: yelp_url)
+  end
+
 end
