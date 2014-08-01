@@ -15,10 +15,12 @@ function loadCommMap(community, restaurants){
 
     var infowin = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(marker, 'click', (function(marker, community) {
-        debugger;
-        return function(community) {
-          infowin.setContent("<h3 class='community'>" + community.name + "</h3>");
+    var com_name = community.name;
+
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+        var com_name = community.name;
+        return function() {
+          infowin.setContent("<h3 class='community'>" + com_name + "</h3>");
           infowin.open(map, marker);
         }
       })(marker));
