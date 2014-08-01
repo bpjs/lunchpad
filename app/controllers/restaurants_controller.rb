@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :get_restaurant, only: [:show, :destroy]
 
-  before_action :authenticate_member!, only: [:destroy]
+  before_action :authenticate_member!
 
   def show
     @community = @restaurant.community
