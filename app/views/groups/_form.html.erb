@@ -1,12 +1,12 @@
 <div id="new-group" class="row">
   <div class="col-sm-6 col-sm-offset-1">
     <h4>Create a new group:</h4>
-    <%= form_for [community, group], html: {class: "form-inline"} do |f| %>
+    <%= form_for [community, Group.new], html: {class: "form-inline"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
 
       <div class="form-group">
-        <%= f.collection_select :restaurant_id, community.restaurants, :id, :name,
+        <%= f.collection_select :restaurant_id, availableRestaurants, :id, :name,
             {prompt: "Choose a Local Restaurant"}, {class: "form-control"} %>
       </div>
 

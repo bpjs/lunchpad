@@ -1,8 +1,9 @@
 class GroupsController < ApplicationController
-  before_action :get_community
+  before_action :get_community, :authenticate_member!
 
   def index
     @groups = @community.groups
+    @ungroupedRestaurants = @community.ungroupedRestaurants
   end
 
   def create
@@ -10,9 +11,9 @@ class GroupsController < ApplicationController
     if @group.save
       current_member.group = @group
       current_member.save
-      flash[:notice] = "Group created"
+      flash[:notice] = "Group successfully created."
     else
-      flash[:alert] = "Could not create group"
+      flash[:alert] = "Error creating group."
     end
     redirect_to community_groups_path(@community)
   end
