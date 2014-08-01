@@ -26,15 +26,16 @@ class MembersController < ApplicationController
   end
 
   def join_group
-    @member.group = Group.find(params[:group_id])
+    @old_group = @member.group
+    @new_group = Group.find(params[:group_id])
+    @member.group = @new_group
     @member.save
-    redirect_to community_groups_path(@member.community)
   end
 
   def leave_group
+    @old_group = @member.group
     @member.group = nil
     @member.save
-    redirect_to community_groups_path(@member.community)
   end
 
   private

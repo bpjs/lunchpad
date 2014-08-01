@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :edit, :update, :destroy]
 
   post "/members/:id/join_group/:group_id", to: "members#join_group", as: "member_join_group"
-  post "/members/:id/leave_group/:group_id", to: "members#leave_group", as: "member_leave_group"
+  post "/members/:id/leave_group", to: "members#leave_group", as: "member_leave_group"
 
   get "yelp_call", to: "restaurants#yelp_call"
 end
