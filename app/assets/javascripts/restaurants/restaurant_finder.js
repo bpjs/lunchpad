@@ -42,12 +42,12 @@ $(document).ready(function(){
         $("#new_restaurant_form").show()
         for(var i =0;i<response.length;i++){
           if(response[i]['location']['coordinate'] != undefined){
-              $("#new_restaurant_form").
+              $("tbody#rest-list").
               append(
-                "<div class='rest_choice' data-name='"+response[i]['name']+"' data-lat='"+response[i]['location']['coordinate']['latitude']
+                "<tr class='rest_choice'><td><div class='rest_choice' data-name='"+response[i]['name']+"' data-lat='"+response[i]['location']['coordinate']['latitude']
                 +"' data-long='"+response[i]['location']['coordinate']['longitude']+"' data-category='"+response[i]['categories'][0][0]+"' data-address='"+response[i]['location']['display_address'][0]+"' data-url='"+response[i]['url']+"'><span class='rest_name'>"
-                +response[i]['name']+"</span>"
-                +"<span class='rest_addr'>"+response[i]['location']['display_address'][0]+"</span></div>")            
+                +response[i]['name']+"     -     </span>"
+                +"<span class='rest_addr'>"+response[i]['location']['display_address'][0]+"</span></div></td></tr>")            
           }else if (response[i]['location']['address'] != undefined){
             findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2], response[i])
           }
