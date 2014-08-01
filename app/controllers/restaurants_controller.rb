@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
   before_action :get_restaurant, only: [:show, :destroy]
 
+  before_action :authenticate_member!
+
   def show
     @community = @restaurant.community
   end
@@ -16,6 +18,8 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    @restaurant.destroy
+    redirect_to root_path, alert: "Restaurant deleted"
   end
 
   def yelp_call

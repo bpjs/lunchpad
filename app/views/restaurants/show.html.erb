@@ -7,7 +7,7 @@
     </div>
     <div>
       <h3 id="review-average"> <%= @restaurant.review_average %> / 5</h3>
-      <h4 id="yelp-link"><%= link_to "View on Yelp", "http://#{@restaurant.yelp_url}" %></h4>
+      <h4 id="yelp-link"><%= link_to "View on Yelp", @restaurant.yelp_url %></h4>
     </div>
   </div>
 
@@ -33,17 +33,16 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <% if member_signed_in? %>
-      <%= render 'reviews/new', review: Review.new(restaurant_id: @restaurant.id) %>
-    <% else %>
-      <h4>
-        <%= link_to 'Sign In', new_member_session_path %> or
-        <%= link_to 'Sign Up', new_member_registration_path %>
-        to add a review!
-      </h4>
-    <% end %>
+    <%= render 'reviews/new', review: Review.new(restaurant_id: @restaurant.id) %>
   </div>
 </div>
+
+<div class="row">
+  <div id="restaurant-delete" class="col-sm-2 col-sm-offset-10">
+    <%= button_to "Delete Restaurant", restaurant_path(@restaurant), :method => :delete, data: {confirm: "Are you sure? :("}, class: "btn btn-danger" %>
+  </div>
+</div>
+
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiSQuuu6i2KkJvB9cBwnyW9oV4cXNvkmI">
 </script>
