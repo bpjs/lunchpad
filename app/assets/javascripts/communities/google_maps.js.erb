@@ -7,14 +7,25 @@ function loadCommMap(community, restaurants){
       zoom: 18
     };
 
-    var image = 'public/images/heart_icon.png';
+    var image = 'images/heart-icon-small.png';
     var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
     var marker = new google.maps.Marker({position: coords, map: map, icon:image});
 
+    var infowin = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function(community) {
+          infowin.setContent("<h3 class='community'>" + name + "</h3>");
+          infowin.open(map, marker);
+        }
+      })(marker));
+
+
     var restaurant_coords = restaurants;
     
     var infowindow = new google.maps.InfoWindow();
+
 
     var marker, i;
 
@@ -25,11 +36,11 @@ function loadCommMap(community, restaurants){
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        console.log("Restaurant Id: " + restaurant_coords[i][3])
         return function() {
-          infowindow.setContent('<a href="/restaurants/' + restaurant_coords[i][3] 
+          infowindow.setContent('<span class="restaurant"><a href="/restaurants/' + restaurant_coords[i][3] 
             + '"><h3>' + restaurant_coords[i][2] 
-            + '</h3></a><a href="http://yelp.com">Yelp It Up!</a><br><p>Rating:</p>');
+            + '</h3></a><p>' + restaurant_coords[i][4] 
+            + '</p><a href="' + restaurant_coords[i][5] + '">Yelp It Up!</a><span>');
           infowindow.open(map, marker);
         }
       })(marker, i));

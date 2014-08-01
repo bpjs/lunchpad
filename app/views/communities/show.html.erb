@@ -22,12 +22,13 @@
 <script type="text/javascript">
   var community = {
     latitude: <%= @community.latitude %>,
-    longitude: <%= @community.longitude %>
+    longitude: <%= @community.longitude %>,
+    name: '<%= @community.name %>'
   };
 
   var restaurants = [];
   <% @community.restaurants.each do |restaurant| %>
-    var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, '<%= restaurant.name %>', <%= restaurant.id %>];
+    var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, '<%= restaurant.name %>', <%= restaurant.id %>, '<%= restaurant.address %>', '<%= restaurant.yelp_url %>'];
     restaurants.push(current_restaurant);
   <% end %>
   loadCommMap(community, restaurants)
