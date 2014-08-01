@@ -15,7 +15,7 @@
 //= require restaurants/google_maps
 //= require restaurants/geocoder
 //= require restaurants/restaurant_finder
+//= require reviews/form
 //= require jquery_ujs
 //= require bootstrap.min
 //= require jquery.raty
-//= require star
