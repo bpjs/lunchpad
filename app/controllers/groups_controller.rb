@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = @community.groups
-    @ungroupedRestaurants = @community.ungroupedRestaurants
   end
 
   def create
@@ -13,7 +12,7 @@ class GroupsController < ApplicationController
       current_member.save
       flash[:notice] = "Group successfully created."
     else
-      flash[:alert] = "Error creating group."
+      flash[:alert] = "Error: Group must have a name and a time."
     end
     redirect_to community_groups_path(@community)
   end
@@ -29,7 +28,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:restaurant_id, :community_id)
+      params.require(:group).permit(:time, :info, :restaurant_id, :community_id)
     end
 
 end

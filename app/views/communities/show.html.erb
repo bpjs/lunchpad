@@ -5,9 +5,10 @@
     <div id="map-canvas"></div>
   </div>
 
+  <h2>Restaurants in your community</h2>
+
   <div id="restaurant-list" class="col-sm-6">
-    <h2>Restaurants in your community</h2>
-    <%= render 'page' %>
+    <%= render 'page', restaurants: @restaurants %>
   </div>
 
   <div id="new_restaurant_selection">
@@ -31,5 +32,14 @@
     var current_restaurant = [<%= restaurant.latitude %>, <%= restaurant.longitude %>, '<%= restaurant.name %>', <%= restaurant.id %>, '<%= restaurant.address %>', '<%= restaurant.yelp_url %>'];
     restaurants.push(current_restaurant);
   <% end %>
-  loadCommMap(community, restaurants)
+  loadCommMap(community, restaurants);
+
+  $(document).ready(function(){
+    $("#restaurant-list").on("click", ".pagination a", function(e){
+      e.preventDefault();
+      $.getScript(this.href);
+      return false;
+    })
+  })
+
 </script>

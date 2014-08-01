@@ -1,8 +1,17 @@
-<div id="group-<%= group.id %>" class="col-sm-4">
-  <h3 class="group-restaurant"><%= group.restaurant.name %></h3>
+<div id="group-<%= group.id %>" class="group col-sm-4">
+  <h2 class="group-restaurant"><%= group.restaurant.name %>,</h2>
+  <h3 class="group-time"><%= group.show_time %></h3>
+  <h4 class="group-info"><%= group.info %></h4>
   <div class="group-members">
-    <% group.members.each do |member| %>
-      <h5><%= member.name %></h5>
+    <h4>Lunchers:</h4>
+    <% if group.members.empty? %>
+      <h5>Nobody! :(</h5>
+    <% else %>
+      <ul class="list-unstyled">
+      <% group.members.each do |member| %>
+        <li><h5><%= member.name %></h5></li>
+      <% end %>
+      </ul>
     <% end %>
     <div class="group-join-leave">
       <% if current_member.group == group %>

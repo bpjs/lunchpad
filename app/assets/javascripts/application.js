@@ -19,3 +19,4 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require jquery.raty
+//= require jquery.timepicker.min
