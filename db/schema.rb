@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140731213107) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "communities", force: true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -41,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140731213107) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "members", ["community_id"], name: "index_members_on_community_id", using: :btree
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
-  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+  add_index "members", ["community_id"], name: "index_members_on_community_id"
+  add_index "members", ["email"], name: "index_members_on_email", unique: true
+  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
@@ -57,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140731213107) do
     t.string   "address"
   end
 
-  add_index "restaurants", ["community_id"], name: "index_restaurants_on_community_id", using: :btree
+  add_index "restaurants", ["community_id"], name: "index_restaurants_on_community_id"
 
   create_table "reviews", force: true do |t|
     t.string   "text"
@@ -68,7 +65,7 @@ ActiveRecord::Schema.define(version: 20140731213107) do
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["member_id"], name: "index_reviews_on_member_id", using: :btree
-  add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id", using: :btree
+  add_index "reviews", ["member_id"], name: "index_reviews_on_member_id"
+  add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id"
 
 end
