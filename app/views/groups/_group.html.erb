@@ -1,0 +1,8 @@
+<div id="group-<%= group.id %>">
+  <h3 class="group-restaurant"><%= group.restaurant.name %></h3>
+  <div class="group-members">
+    <% group.members.each do |member| %>
+      <h5><%= member.name %></h5>
+    <% end %>
+  </div>
+</div>

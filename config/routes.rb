@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   devise_for :members
 
   resources :communities, only: [:show] do
-    resources :groups, only: [:index, :create, :destroy]
+    resources :groups, only: [:index, :create]
   end
+
+  resources :groups, only: [:destroy]
 
   resources :restaurants, only: [:show, :create, :destroy]
   resources :members, except: [:index]
