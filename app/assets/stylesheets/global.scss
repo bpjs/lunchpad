@@ -6,6 +6,17 @@
   display: inline;
 }
 
+/* Error Messages */
+
+.error_explanation {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.error_explanation h4 {
+  color: #c0392b;
+}
+
 /* For Maps and shit */
 
 #map-canvas {
