@@ -7,6 +7,7 @@ function loadCommMap(community, restaurants){
       zoom: 18
     };
 
+
     var image = 'images/heart-icon-small.png';
     var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
@@ -14,9 +15,12 @@ function loadCommMap(community, restaurants){
 
     var infowin = new google.maps.InfoWindow();
 
+    var com_name = community.name;
+
     google.maps.event.addListener(marker, 'click', (function(marker) {
-        return function(community) {
-          infowin.setContent("<h3 class='community'>" + name + "</h3>");
+        var com_name = community.name;
+        return function() {
+          infowin.setContent("<h3 class='community'>" + com_name + "</h3>");
           infowin.open(map, marker);
         }
       })(marker));
