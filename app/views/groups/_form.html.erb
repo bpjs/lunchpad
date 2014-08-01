@@ -1,19 +1,27 @@
 <div id="new-group" class="row">
-  <div class="col-sm-6 col-sm-offset-1">
-    <h4>Create a new group:</h4>
-    <%= form_for [community, Group.new], html: {class: "form-inline"} do |f| %>
+  <div class="col-sm-6">
+    <h3>Create a new group:</h3>
+    <%= form_for [community, Group.new], html: {class: "form-horizontal"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
 
-      <div class="form-group">
-        <%= f.collection_select :restaurant_id, community.restaurants, :id, :name,
-            {prompt: "Choose a Local Restaurant"}, {class: "form-control"} %>
+      <div class="row">
+        <div class="form-group col-sm-8">
+          <%= f.collection_select :restaurant_id, community.restaurants, :id, :name,
+              {prompt: "Choose a Local Restaurant"}, {class: "form-control"} %>
+        </div>
       </div>
 
-      <div class="form-group">
-        <%= f. %>
-          <%= f.hidden_field :time %>
-        </span>
+      <div class="row">
+        <div class="form-group col-sm-3">
+          <%= f.text_field :time, class: "form-control", placeholder: "Time" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.text_area :info, class: "form-control", placeholder: "Extra Information" %>
+        </div>
       </div>
 
       <div class="form-group">
@@ -23,8 +31,18 @@
   </div>
 
   <script type="text/javascript">
-    var $timepicker = $('#timepicker');
-    $timepicker.timepicker({ 'scrollDefault': 'now' });
+    var $timepicker = $('#group_time'),
+        inFiveHours = new Date(),
+        inTwentyMinutes = new Date();
+    inFiveHours.setHours(new Date().getHours() + 5);
+    inTwentyMinutes.setMinutes(new Date().getMinutes() + 20);
+    $timepicker.timepicker({
+      'scrollDefault': 'now',
+      'minTime': new Date(),
+      'maxTime': inFiveHours,
+      'step': 15
+    });
+    $timepicker.timepicker('setTime', inTwentyMinutes);
     $timepicker.on('changeTime', function() {
       console.log('change');
       console.log($(this).val());
