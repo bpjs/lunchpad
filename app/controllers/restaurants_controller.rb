@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to @restaurant
     else
-      flash[:alert] = "Restaurant was not saved properly."
+      flash.now[:alert] = "Restaurant was not saved properly."
       render 'communities/show'
     end
   end

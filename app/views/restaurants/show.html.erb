@@ -57,19 +57,4 @@
   }
   loadRestMap(community, restaurant);
 
-  $(function() {
-    $('#directions-toggle').click(function() {
-      var $directions = $('#directions-panel');
-      var $map = $('#restaurant-map');
-      if ($directions.is(':visible')) { // Hide it
-        $directions.hide();
-        $map.show();
-        $(this).text('Show Directions');
-      } else {
-        $directions.show();
-        $map.hide();
-        $(this).text('Show Map');
-      }
-    });
-  });
 </script>
