@@ -4,5 +4,6 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :community
+  belongs_to :group
   has_many :reviews
 end

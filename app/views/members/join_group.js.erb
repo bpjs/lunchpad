@@ -1,0 +1,4 @@
+$('#group-<%= @new_group.id %>').replaceWith('<%= j render @new_group %>');
+<% if @old_group %>
+  $('#group-<%= @old_group.id %>').replaceWith('<%= j render @old_group %>');
+<% end %>

@@ -1,10 +1,4 @@
 $(function() {
-  $('.star-rating').raty({
-    click: function(score, evt){
-      var rating=score;
-      $('#review_rating').val(rating);
-    }
-  });
 
   // $('.review-form').click(function(e) {
   //   e.preventDefault();

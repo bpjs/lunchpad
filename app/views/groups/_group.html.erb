@@ -1,0 +1,15 @@
+<div id="group-<%= group.id %>" class="col-sm-4">
+  <h3 class="group-restaurant"><%= group.restaurant.name %></h3>
+  <div class="group-members">
+    <% group.members.each do |member| %>
+      <h5><%= member.name %></h5>
+    <% end %>
+    <div class="group-join-leave">
+      <% if current_member.group == group %>
+        <%= button_to "Leave Group", member_leave_group_path(current_member), remote: true, class: "leave-group btn btn-xs btn-danger" %>
+      <% else %>
+        <%= button_to "Join Group", member_join_group_path(current_member, group), remote: true, class: "join-group btn btn-xs btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

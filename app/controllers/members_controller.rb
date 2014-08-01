@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :get_member, only: [:show, :edit, :destroy]
+  before_action :get_member, only: [:show, :edit, :destroy, :join_group, :leave_group]
 
   def show
 
@@ -23,6 +23,19 @@ class MembersController < ApplicationController
 
   def destroy
 
+  end
+
+  def join_group
+    @old_group = @member.group
+    @new_group = Group.find(params[:group_id])
+    @member.group = @new_group
+    @member.save
+  end
+
+  def leave_group
+    @old_group = @member.group
+    @member.group = nil
+    @member.save
   end
 
   private
