@@ -59,5 +59,6 @@ end
 gem 'devise'
 gem 'yelp'
 gem 'figaro'
+gem 'will_paginate'
 
 gem "bootstrap-sass", "~> 3.1.1"
