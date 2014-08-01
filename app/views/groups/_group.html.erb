@@ -4,5 +4,12 @@
     <% group.members.each do |member| %>
       <h5><%= member.name %></h5>
     <% end %>
+    <div class="group-join-leave">
+      <% if current_member.group == group %>
+        <%= button_to "Leave Group", member_leave_group_path(current_member, group), class: "btn btn-xs btn-danger" %>
+      <% else %>
+        <%= button_to "Join Group", member_join_group_path(current_member, group), class: "btn btn-xs btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
