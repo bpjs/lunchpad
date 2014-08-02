@@ -15,11 +15,12 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.by_average_rating_for_community(community_id)
-    where(community_id: community_id).joins("left outer join reviews on restaurants.id = reviews.restaurant_id").group("restaurants.id").order("AVG(reviews.rating) DESC NULLS LAST")
+    ordering = "AVG(reviews.rating) DESC"
+    ordering += "NULLS LAST" if Rails.env == "production"
+    where(community_id: community_id)
+    .joins("left outer join reviews on restaurants.id = reviews.restaurant_id")
+    .group("restaurants.id")
+    .order(ordering)
   end
 
 end
-
-    where(community_id: community_id)
-    .joins("left outer join reviews on restaurants.id = reviews.restaurant_id")
-    .group("restaurants.id").order("AVG(reviews.rating) DESC")
