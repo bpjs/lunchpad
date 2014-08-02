@@ -1,3 +1,31 @@
+.group {
+  margin-top: 15px;
+}
+
+.group-restaurant, .group-time {
+  display: inline;
+}
+
+.group-time {
+  margin-left: 5px;
+}
+
+.group-info {
+  font-style: italic;
+}
+
+.group-members ul li {
+  margin-left: 7px;
+}
+
+.group-join-leave {
+  margin-top: 25px;
+}
+
 #new-group {
   margin-top: 100px;
+}
+
+#new-group div form {
+  margin: 20px 0px 10px 15px;
 }
