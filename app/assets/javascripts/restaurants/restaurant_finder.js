@@ -1,59 +1,85 @@
-$(document).ready(function(){
-  $('#new_restaurant_form').hide();
+$(document).ready(function() {
+  $newRestaurant = $('#new_restaurant_form');
+  $restaurantSearchResults = $('#restaurant_search_results');
 
-  $("#new_restaurant_form").on('click', '.rest_choice', function(){
-    $("#restaurant_name").val($(this).data('name'));
-    $("#restaurant_latitude").val($(this).data('lat'));
-    $("#restaurant_longitude").val($(this).data('long'));
-    $("#restaurant_category").val($(this).data('category'));
-    $("#restaurant_yelp_url").val($(this).data('url'));
-    $("#restaurant_address").val($(this).data('address'));
-    $("#new_restaurant_form").submit();
+  $("#restaurant_search_results").on('click', 'tr.restaurant_choice', function() {
+    $newRestaurant.find("#restaurant_name").val($(this).data('name'));
+    $newRestaurant.find("#restaurant_latitude").val($(this).data('latitude'));
+    $newRestaurant.find("#restaurant_longitude").val($(this).data('longitude'));
+    $newRestaurant.find("#restaurant_category").val($(this).data('category'));
+    $newRestaurant.find("#restaurant_yelp_url").val($(this).data('url'));
+    $newRestaurant.find("#restaurant_address").val($(this).data('address'));
+    $newRestaurant.submit();
   });
 
-  var geocoder;
-  var map;
-  function findCoords(address, rest_data){
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode({'address': address}, function(results, status){
-      if (status == google.maps.GeocoderStatus.OK){
-        foundlat = results[0].geometry.location.k;
-        foundlong = results[0].geometry.location.B;
-        console.log(rest_data['name']);
-        $("tbody#rest-list").append(
-          "<tr class='rest_choice'><td><div class='rest_choice' data-name='"+rest_data['name']+"' data-lat='"+foundlat
-          +"' data-long='"+foundlong+"' data-category='"+rest_data['categories'][0][0]+"' data-address='"+rest_data['location']['display_address'][0]+"' data-url='"+rest_data['url']+"'><span class='rest_name'>"
-          +rest_data['name']+" - </span>"
-          +"<span class='rest_addr'>"+rest_data['location']['display_address'][0]+"</span></div></tr></td>"           
-        )
-      }
-    });
-  };
-
-  $('#restaurant_search').on('submit', function(e){
+  $('#restaurant_search').on('submit', function(e) {
     e.preventDefault();
-    $('#restaurant_search').hide();
+    $restaurantSearchResults.find('tr').remove();
 
-    $.get( "/yelp_call?name=" 
-      + $('#name').val()+"&latitude=" 
-      + $('#latitude').val()+"&longitude=" 
-      + $('#longitude').val(), 
+    $.get( "/yelp_call?name="
+      + $('#name').val()+"&latitude="
+      + $('#latitude').val()+"&longitude="
+      + $('#longitude').val(),
       function( response ) {
         $('#name').val('');
-        $("#new_restaurant_form").show()
-        for(var i =0;i<response.length;i++){
-          if(response[i]['location']['coordinate'] != undefined){
-              $("tbody#rest-list").
-              append(
-                "<tr class='rest_choice'><td><div class='rest_choice' data-name='"+response[i]['name']+"' data-lat='"+response[i]['location']['coordinate']['latitude']
-                +"' data-long='"+response[i]['location']['coordinate']['longitude']+"' data-category='"+response[i]['categories'][0][0]+"' data-address='"+response[i]['location']['display_address'][0]+"' data-url='"+response[i]['url']+"'><span class='rest_name'>"
-                +response[i]['name']+"     -     </span>"
-                +"<span class='rest_addr'>"+response[i]['location']['display_address'][0]+"</span></div></td></tr>")            
-          }else if (response[i]['location']['address'] != undefined){
-            findCoords(response[i]['location']['display_address'][0]+", "+response[i]['location']['display_address'][2], response[i])
-          }
+        $("#new_restaurant_form").show();
+        for(var i = 0; i < response.length; i++) {
+          normalizeLocationAndAppend(response[i]);
         }
       }
     );
   });
+
+
+  function normalizeLocationAndAppend(restaurant) {
+    var yelpLocation = restaurant['location'];
+    var streetAddress = yelpLocation['display_address'][0];
+    var location = {
+      display_address: streetAddress
+    };
+    if (yelpLocation['coordinate']) {
+      location['latitude'] = yelpLocation['coordinate']['latitude'];
+      location['longitude'] = yelpLocation['coordinate']['longitude'];
+      appendToTable(restaurant, location);
+    } else {
+      var locationComponents = getLocationComponents(yelpLocation);
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({address: streetAddress, componentRestrictions: locationComponents}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          location['latitude'] = results[0].geometry.location.k;
+          location['longitude'] = results[0].geometry.location.B;
+
+          appendToTable(restaurant, location);
+        }
+      });
+    }
+  }
+
+  function appendToTable(restaurant, location) {
+    var $tr = $('<tr class="restaurant_choice">');
+    $tr.data('name', restaurant['name']);
+    $tr.data('latitude', location['latitude']);
+    $tr.data('longitude', location['longitude']);
+    $tr.data('address', location['display_address']);
+    $tr.data('category', restaurant['categories'][0][0]);
+    $tr.data('url', restaurant['url']);
+    $tr.append('<td class="restaurant-name">' + restaurant['name'] + '</td>');
+    $tr.append('<td class="restaurant-address">' + location['display_address'] + '</td>');
+    $restaurantSearchResults.find("tbody").append($tr);
+  }
+
+  // Get all available info from the yelp results and convert to info to pass to Google Geocoder
+  function getLocationComponents(yelpLocation) {
+    var components = {};
+    if (yelpLocation["postal_code"]) {
+      components["postalCode"] = yelpLocation["postal_code"];
+    }
+    if (yelpLocation["state_code"]) {
+      components["administrativeArea"] = yelpLocation["state_code"];
+    }
+    if (yelpLocation["city"]) {
+      components["locality"] = yelpLocation["city"];
+    }
+    return components;
+  }
 });

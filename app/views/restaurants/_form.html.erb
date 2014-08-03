@@ -16,7 +16,16 @@
         <h4 class="modal-title" id="myModalLabel">Choose a Restaurant to Add to Your Community</h4>
       </div>
       <div class="modal-body">
-        <%= form_for restaurant, html: {id: 'new_restaurant_form'} do |f| %>
+        <table id="restaurant_search_results" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Restaurant</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody id="restaurant_list"></tbody>
+        </table>
+        <%= form_for restaurant, html: {id: 'new_restaurant_form', style: 'display:none;'} do |f| %>
           <%= f.hidden_field :community_id %>
           <%= f.hidden_field :yelp_url %>
           <%= f.hidden_field :address %>
@@ -24,15 +33,7 @@
           <%= f.hidden_field :name %>
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Restaurant - Address</th>
-              </tr>
-            </thead>
-            <tbody id="rest-list">
-            </tbody>
-          </table>
+
         <% end %>
       </div>
       <div class="modal-footer">
