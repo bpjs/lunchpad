@@ -5,13 +5,14 @@
     <div id="map-canvas"></div>
   </div>
 
-  <h2>Restaurants in your community</h2>
-
   <div id="restaurant-list" class="col-sm-6">
     <%= render 'page', restaurants: @restaurants %>
   </div>
 
-  <div id="new_restaurant_selection">
+</div>
+
+<div class="row">
+  <div id="new_restaurant_selection" class="col-sm-6 col-sm-offset-6">
     <% if member_signed_in? %>
       <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
     <% end %>
