@@ -1,4 +1,5 @@
 $('#reviews').append("<%= j render @review %>");
 var $new_review = $('#new_review');
 $new_review[0].reset();
-$new_review.find('#error_explanation').remove();
+$new_review.find('#star-rating-new').raty('score', 0);
+$new_review.find('.error_explanation').remove();
