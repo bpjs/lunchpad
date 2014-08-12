@@ -31,7 +31,6 @@
         $reviewRating = $('#review-rating-<%= review.persisted? ? review.id : "new" %>');
     $starRating.raty({
       click: function(score, evt) {
-        console.log('click MUHFUCKA');
         var rating = score;
         $reviewRating.val(rating);
       }
