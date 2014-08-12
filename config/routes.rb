@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  root to: redirect('communities/1')
+  root to: 'communities#index'
   devise_for :members
 
-  resources :communities, only: [:show] do
+  resources :communities, only: [:show, :index, :new, :create] do
+    resources :restaurants, only: [:index, :create]
     resources :groups, only: [:index, :create]
   end
-
+  resources :restaurants, only: [:show, :destroy]
   resources :groups, only: [:destroy]
-
-  resources :restaurants, only: [:show, :create, :destroy]
   resources :members, except: [:index]
   resources :reviews, only: [:create, :edit, :update, :destroy]
 

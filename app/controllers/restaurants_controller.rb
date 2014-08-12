@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :get_community, only: [:create]
   before_action :get_restaurant, only: [:show, :destroy]
 
   before_action :authenticate_member!
@@ -8,8 +9,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.existing_restaurant(params[:restaurant][:yelp_url]) || Restaurant.new(restaurant_params)
-    if @restaurant.save
+    @restaurant = @community.existing_restaurant(restaurant_params[:yelp_url]) || @community.restaurants.create(restaurant_params)
+    if @restaurant.persisted?
       redirect_to @restaurant
     else
       flash.now[:alert] = "Restaurant was not saved properly."
@@ -29,6 +30,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+    def get_community
+      @community = Community.find(params[:community_id])
+    end
 
     def get_restaurant
       @restaurant = Restaurant.find(params[:id])

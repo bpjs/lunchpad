@@ -27,7 +27,7 @@
           </thead>
           <tbody id="restaurant_list"></tbody>
         </table>
-        <%= form_for restaurant, html: {id: 'new_restaurant_form', style: 'display:none;'} do |f| %>
+        <%= form_for [@community, restaurant], html: {id: 'new_restaurant_form', style: 'display:none;'} do |f| %>
           <%= f.hidden_field :community_id %>
           <%= f.hidden_field :yelp_url %>
           <%= f.hidden_field :address %>
