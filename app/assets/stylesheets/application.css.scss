@@ -35,6 +35,28 @@ body {
   background-image: none;
 }
 
+.navbar-header a{
+  background-image:url('lunchpadlogo.png');
+  background-size:100%;
+  width:140px;
+}
+
+.navbar-header a:hover:before{
+  content: "";
+  display:block;
+  position:absolute;
+  width:140px;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: rgba(0,0,0,0.1);
+  -moz-transition: background .3s linear;
+  -webkit-transition: background .3s linear;
+  -o-transition: background .3s linear;
+  transition: background .3s linear;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
