@@ -14,8 +14,7 @@ function loadRestMap(community, restaurant){
     directionsDisplay = new google.maps.DirectionsRenderer();
 
     var mapOptions = {
-      center: new google.maps.LatLng(mapCenter[0],mapCenter[1]),
-      zoom: 18
+      center: new google.maps.LatLng(mapCenter[0],mapCenter[1])
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
