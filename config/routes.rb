@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: redirect('communities/1')
+  root to: 'communities#index'
   devise_for :members
 
   resources :communities, only: [:show, :index, :new, :create] do
