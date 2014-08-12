@@ -1,0 +1,34 @@
+<%= form_for(community, html: {class: "form-horizontal") do |f| %>
+
+  <%= render 'shared/errors', object: community %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :latitude %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= f.text_field :latitude, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :longitude %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= f.text_field :longitude, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.button, 'Create', type: 'submit', class: "btn btn-primary" %>
+
+<% end %>

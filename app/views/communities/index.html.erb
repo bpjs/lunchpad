@@ -1,0 +1,8 @@
+<% @communities.each do |community| %>
+
+  <h1><%= link_to community.name, community %></h1><br><br>
+
+<% end %>
+
+<br><br>
+<%= link_to 'New', new_community_path %>

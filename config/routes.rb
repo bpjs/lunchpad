@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: redirect('communities/1')
   devise_for :members
 
-  resources :communities, only: [:show] do
+  resources :communities, only: [:show, :index, :new, :create] do
     resources :restaurants, only: [:index, :create]
     resources :groups, only: [:index, :create]
   end
