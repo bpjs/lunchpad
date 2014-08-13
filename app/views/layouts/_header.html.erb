@@ -19,6 +19,7 @@
               <ul class="dropdown-menu">
                 <% current_member.communities.each do |community| %>
                   <li><%= link_to community.name, community %></li>
+                  <li class="lunch-groups"><%= link_to " - Lunch Groups", community_groups_path(community) %></li>
                 <% end %>
               </ul>
             </li>
