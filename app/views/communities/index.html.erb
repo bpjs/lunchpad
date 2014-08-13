@@ -1,5 +1,12 @@
 <div id="communities-list" class="row">
+
+<% if member_signed_in? %>
+  <%= render current_member.communities %>
+  <%= render current_member.foreign_communities %>
+<% else %>
   <%= render @communities %>
+<% end %>
+
 </div>
 
 <% if member_signed_in? %>
