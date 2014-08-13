@@ -29,12 +29,15 @@ class MembersController < ApplicationController
     @new_community = Community.find(params[:community_id])
     @member.member_communities.build(community: @new_community)
     @member.save
+    flash[:notice] = "Welcome to #{@new_community.name}!"
     redirect_to @new_community
   end
 
   def leave_community
+    @community = Community.find_by(params[:community_id])
     @member.member_communities.find_by(params[:community_id]).delete
     @member.save
+    flash[:notice] = "Successfully left #{@community.name}"
     redirect_to root_path
   end
 
