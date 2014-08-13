@@ -6,6 +6,10 @@
   display: inline;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 /* Error Messages */
 
 .error_explanation {
