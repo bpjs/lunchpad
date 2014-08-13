@@ -10,4 +10,9 @@ class Community < ActiveRecord::Base
   def existing_restaurant(yelp_url)
     restaurants.where(yelp_url: yelp_url).first
   end
+
+  def address=(address)
+    self.latitude, self.longitude = Geocoder.coordinates(address)
+  end
+
 end

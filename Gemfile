@@ -61,5 +61,6 @@ gem 'yelp'
 gem 'figaro'
 gem 'will_paginate'
 gem 'jquery-historyjs'
+gem 'geocoder'
 
 gem "bootstrap-sass", "~> 3.1.1"
