@@ -9,6 +9,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    image_url = Yelp.client.business(params[:restaurant][:image_url]).image_url
+    params[:restaurant][:image_url] = image_url.sub('ms.jpg', 'l.jpg')
     @restaurant = @community.existing_restaurant(restaurant_params[:yelp_url]) || @community.restaurants.create(restaurant_params)
     if @restaurant.persisted?
       redirect_to @restaurant
@@ -40,7 +42,7 @@ class RestaurantsController < ApplicationController
     end
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :category, :yelp_url, :address, :latitude, :longitude, :community_id)
+      params.require(:restaurant).permit(:name, :category, :yelp_url, :address, :latitude, :longitude, :community_id, :image_url)
     end
 
 end

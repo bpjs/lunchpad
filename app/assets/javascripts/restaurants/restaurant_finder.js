@@ -9,6 +9,7 @@ $(document).ready(function() {
     $newRestaurant.find("#restaurant_category").val($(this).data('category'));
     $newRestaurant.find("#restaurant_yelp_url").val($(this).data('url'));
     $newRestaurant.find("#restaurant_address").val($(this).data('address'));
+    $newRestaurant.find("#restaurant_image_url").val($(this).data('image_url'));
     $newRestaurant.submit();
   });
 
@@ -34,13 +35,14 @@ $(document).ready(function() {
   function normalizeLocationAndAppend(restaurant) {
     var yelpLocation = restaurant['location'];
     var streetAddress = yelpLocation['display_address'][0];
+    var yelp_id = restaurant['id']
     var location = {
       display_address: streetAddress
     };
     if (yelpLocation['coordinate']) {
       location['latitude'] = yelpLocation['coordinate']['latitude'];
       location['longitude'] = yelpLocation['coordinate']['longitude'];
-      appendToTable(restaurant, location);
+      appendToTable(restaurant, location, yelp_id);
     } else {
       var locationComponents = getLocationComponents(yelpLocation);
       var geocoder = new google.maps.Geocoder();
@@ -48,14 +50,13 @@ $(document).ready(function() {
         if (status == google.maps.GeocoderStatus.OK) {
           location['latitude'] = results[0].geometry.location.k;
           location['longitude'] = results[0].geometry.location.B;
-
-          appendToTable(restaurant, location);
+          appendToTable(restaurant, location, yelp_id);
         }
       });
     }
   }
 
-  function appendToTable(restaurant, location) {
+  function appendToTable(restaurant, location, yelp_id) {
     var $tr = $('<tr class="restaurant_choice">');
     $tr.data('name', restaurant['name']);
     $tr.data('latitude', location['latitude']);
@@ -63,6 +64,7 @@ $(document).ready(function() {
     $tr.data('address', location['display_address']);
     $tr.data('category', restaurant['categories'][0][0]);
     $tr.data('url', restaurant['url']);
+    $tr.data('image_url', yelp_id);
     $tr.append('<td class="restaurant-name">' + restaurant['name'] + '</td>');
     $tr.append('<td class="restaurant-address">' + location['display_address'] + '</td>');
     $restaurantSearchResults.find("tbody").append($tr);

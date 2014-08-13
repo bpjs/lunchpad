@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801174427) do
+ActiveRecord::Schema.define(version: 20140813012402) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140801174427) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.string   "image_url"
   end
 
   add_index "restaurants", ["community_id"], name: "index_restaurants_on_community_id"
