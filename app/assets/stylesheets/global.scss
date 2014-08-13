@@ -1,3 +1,60 @@
+/* Some Style from the Bootstrap Default Theme */
+
+.navbar {
+  background-image: none;
+}
+
+.navbar-header a{
+  background-image:url('lunchpadlogo.png');
+  background-size:100%;
+  width:140px;
+}
+
+.navbar-header a:hover:before{
+  content: "";
+  display:block;
+  position:absolute;
+  width:140px;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: rgba(0,0,0,0.1);
+  -moz-transition: background .3s linear;
+  -webkit-transition: background .3s linear;
+  -o-transition: background .3s linear;
+  transition: background .3s linear;
+}
+
+.navbar ul {
+
+  a {
+
+    font-size: 16px;
+
+    &:hover {
+      color: #333;
+      background: #eeeeee;
+    }
+
+  }
+
+  .lunch-groups a {
+    padding-left: 25px;
+  }
+
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
 .button_to {
   display: inline;
 }
@@ -63,4 +120,41 @@ a:hover {
     float: none;
     width: auto;
   }
+}
+
+/* Index Page */
+
+#about {
+
+  background: white url('rotatedlogo.png') no-repeat center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 30px 25px 0px 0px;
+  padding: 10px;
+
+  .title {
+    text-align: center;
+    margin: 15px 0px 25px 0px;
+  }
+
+  .lead {
+    color: #495050;
+  }
+
+}
+
+#footer {
+
+  margin-top: 30px;
+  background: white;
+  padding: 15px 0px;
+  text-align: center;
+
+  .lead {
+    font-size: 21px;
+    margin-bottom: 5px;
+  }
+
 }

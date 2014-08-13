@@ -1,7 +1,20 @@
 // Index Page
 
+
 #communities-list {
-  margin-bottom: 70px;
+
+  margin-bottom: 50px;
+  padding-left: 12px;
+
+  h2 {
+    margin-bottom: 25px;
+  }
+
+}
+
+#new-community-button {
+  float: right;
+  margin-right: 32px;
 }
 
 .community {
@@ -10,6 +23,7 @@
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 2px solid #2c3e50;
+  margin-bottom: 20px;
   padding: 5px;
 
   .row {
@@ -42,6 +56,12 @@
   }
 }
 
+// New form
+
+#new_community {
+  margin-top: 30px;
+}
+
 // Show Page
 
 #community-map {
@@ -69,8 +89,3 @@
   margin-left: 10px;
 }
 
-// New form
-
-#new_community {
-  margin-top: 30px;
-}

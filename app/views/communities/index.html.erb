@@ -1,14 +1,50 @@
-<div id="communities-list" class="row">
+<div class="row">
+  <div id="about-wrapper" class="col-xs-12 col-sm-6 col-md-8">
+    <div id="about">
 
-<% if member_signed_in? %>
-  <%= render current_member.communities %>
-  <%= render current_member.foreign_communities %>
-<% else %>
-  <%= render @communities %>
-<% end %>
+      <h1 class="title">Lunchpad</h1>
 
+      <p class="lead">
+        The internet is full of opinions on where you should eat, but can you trust the source?
+      </p>
+      <p class="lead">
+        Local Lunch provides you with restaurant recommendations written by the people in your office.
+      </p>
+      <p class="lead">
+        Caballero's might be great in general, but Jim in Accounting will know that it's not a good option for your team since there is no way to make it through their line during your measly 20 minute lunch break. It's this kind of inside info that makes lunch a great success.
+      </p>
+      <p class="lead">
+        Once you've selected the perfect restaurant, make it even better by going with friends! Local Lunch makes it easy to form a lunch group so other people can join you on your culinary adventure.
+      </p>
+    </div>
+  </div>
+
+  <div id="communities-list" class="row col-xs-12 col-sm-6 col-md-4">
+    <h2>Open Communities</h2>
+    <% if member_signed_in? %>
+    <%= render current_member.communities %>
+    <%= render current_member.foreign_communities %>
+    <% else %>
+    <%= render @communities %>
+    <% end %>
+  </div>
+
+  <% if member_signed_in? %>
+    <%= button_to 'Create a New Community', new_community_path, method: :get, id: "new-community-button", class: "btn btn-lg btn-success" %>
+  <% end %>
 </div>
 
-<% if member_signed_in? %>
-  <%= button_to 'Create a New Community', new_community_path, method: :get, class: "btn btn-lg btn-success" %>
+<%= content_for :footer do %>
+  <div id="footer" class="row">
+    <div class="col-xs-12">
+      <p class="lead">
+        Lunchpad was made at The Flatiron School by
+        <%= link_to "Brandon", "https://github.com/bajh" %> (<%= link_to "@bajh", "https://twitter.com/bhpkns"%>),
+        <%= link_to "Peter", "https://github.com/pcrglennon" %> (<%= link_to "@pcrglennon", "https://twitter.com/pcrglennon"%>),
+        <%= link_to "Jessica", "https://github.com/jessrudder" %> (<%= link_to "@jessrudder", "https://twitter.com/jessrudder"%>),
+        <%= link_to "Brandon", "https://github.com/simonseroussi" %> (<%= link_to "@simonseroussi", "https://twitter.com/simonseroussi"%>).
+        (folks who take their lunchtime shenanigans seriously).
+      </p>
+    </div>
+  </div>
 <% end %>
