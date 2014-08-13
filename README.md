@@ -15,10 +15,9 @@ Add some spiffy screenshots of your app here.
 
 ## Background
 
-Why did you want to make this app? What was your development process
-like?
+We like lunch!  And we like good lunch recommendations.  Most of all we like going to lunch with the people around us.
 
-
+Lunch Pad makes all of that easier.
 
 
 ## Usage
