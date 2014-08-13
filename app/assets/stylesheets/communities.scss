@@ -4,8 +4,18 @@
   margin-bottom: 70px;
 }
 
-.community-name {
-  margin: 15px 5px;
+.community {
+
+  .community-name {
+    display: inline-block;
+    margin: 15px 5px;
+  }
+
+  .member-of-community, .join-community {
+    margin-left: 15px;
+    display: inline-block;
+  }
+
 }
 
 // Show Page

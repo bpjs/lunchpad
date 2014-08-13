@@ -1,9 +1,20 @@
 <div id="communities-list">
   <% @communities.each do |community| %>
 
-    <h1 class="community_name"><%= link_to community.name, community %></h1><br><br>
+    <div class="community">
+      <h1 class="community-name"><%= link_to community.name, community %></h1>
+      <% if member_signed_in? %>
+        <% if current_member.community != community %>
+          <%= button_to 'Join Community', member_join_community_path(current_member, community), class: "btn btn-success join-community" %>
+        <% else current_member.community  %>
+          <h3 class="member-of-community">Member</h3>
+        <% end %>
+      <% end %> <!-- end member_signed_in? -->
+    </div>
 
-  <% end %>
+  <% end %> <!-- end @communities.each -->
 </div>
 
-<%= button_to 'New Community', new_community_path, method: :get, class: "btn btn-lg btn-primary" %>
+<% if member_signed_in? %>
+  <%= button_to 'New Community', new_community_path, method: :get, class: "btn btn-lg btn-primary" %>
+<% end %>
