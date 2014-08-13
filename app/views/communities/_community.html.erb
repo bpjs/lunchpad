@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <div class="community">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="name"><%= member_signed_in? ? link_to(community.name, community) : community.name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 members">
+        <h4><%= pluralize community.members.count, "Member" %></h4>
+        <% if member_signed_in? %>
+          <% if current_member.communities.include?(community) %>
+            <%= button_to 'Leave', member_leave_community_path(current_member, community), class: "btn btn-danger btn-sm", form: {class: "pull-right"} %>
+          <% else %>
+            <%= button_to 'Join', member_join_community_path(current_member, community), class: "btn btn-success btn-sm", form: {class: "pull-right"} %>
+          <% end %>
+        <% end %> <!-- end member_signed_in? -->
+      </div>
+    </div>
+  </div>
+</div>

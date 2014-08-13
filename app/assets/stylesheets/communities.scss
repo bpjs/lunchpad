@@ -6,16 +6,40 @@
 
 .community {
 
-  .community-name {
-    display: inline-block;
-    margin: 15px 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid #2c3e50;
+  padding: 5px;
+
+  .row {
+    margin: 0px;
   }
 
-  .member-of-community, .join-community {
-    margin-left: 15px;
-    display: inline-block;
+  .name {
+    margin-top: 8px;
+    text-align: center;
   }
 
+  .members {
+
+    margin: 8px;
+
+    h4 {
+      display: inline-block;
+    }
+
+    form {
+      margin-top: 6px;
+      display: inline-block;
+      vertical-align: bottom;
+
+      .btn {
+        height: 32px;
+        display: inline-block;
+      }
+    }
+  }
 }
 
 // Show Page
