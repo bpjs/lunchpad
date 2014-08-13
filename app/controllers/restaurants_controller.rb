@@ -1,11 +1,10 @@
 class RestaurantsController < ApplicationController
+  before_action :get_restaurant_and_community, only: [:show, :destroy]
   before_action :get_community, only: [:create]
-  before_action :get_restaurant, only: [:show, :destroy]
-
   before_action :authenticate_member!
+  before_action :authenticate_member_of_community, except: [:yelp_call]
 
   def show
-    @community = @restaurant.community
   end
 
   def create
@@ -37,12 +36,20 @@ class RestaurantsController < ApplicationController
       @community = Community.find(params[:community_id])
     end
 
-    def get_restaurant
+    def get_restaurant_and_community
       @restaurant = Restaurant.find(params[:id])
+      @community = @restaurant.community
     end
 
     def restaurant_params
       params.require(:restaurant).permit(:name, :category, :yelp_url, :address, :latitude, :longitude, :community_id, :image_url)
+    end
+
+    def authenticate_member_of_community
+      unless @community.members.include?(current_member)
+        flash[:alert] = "You must be a member of this community to see its restaurants!"
+        redirect_to communities_path
+      end
     end
 
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :members
 
   resources :communities, only: [:show, :index, :new, :create] do
-    resources :restaurants, only: [:index, :create]
+    resources :restaurants, only: [:create]
     resources :groups, only: [:index, :create]
   end
   resources :restaurants, only: [:show, :destroy]

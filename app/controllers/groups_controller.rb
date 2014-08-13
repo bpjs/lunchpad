@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :get_community, :authenticate_member!
+  before_action :get_community, :authenticate_member!, :authenticate_member_of_community
 
   def index
     @groups = @community.groups
@@ -29,6 +29,13 @@ class GroupsController < ApplicationController
 
     def group_params
       params.require(:group).permit(:time, :info, :restaurant_id, :community_id)
+    end
+
+    def authenticate_member_of_community
+      unless @community.members.include?(current_member)
+        flash[:alert] = "You must be a member of this community to see its lunch groups!"
+        redirect_to communities_path
+      end
     end
 
 end
