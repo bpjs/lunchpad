@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    binding.pry
     image_url = Yelp.client.business(params[:restaurant][:image_url]).image_url
     params[:restaurant][:image_url] = image_url.sub('ms.jpg', 'l.jpg')
     @restaurant = @community.existing_restaurant(restaurant_params[:yelp_url]) || @community.restaurants.create(restaurant_params)

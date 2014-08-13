@@ -1,12 +1,50 @@
+#restaurant-info{
 
-#review-average {
-  display: inline-block;
+  #name{
+    display:inline-block;
+  }
+
+  #category{
+    margin-left:12px;
+    display:inline-block;
+    font-size:24px;
+  }
+  
+  #address{
+    margin-top:0px;
+    font-size:22px;
+    font-style:italic;
+  }
+
+  #review-average {
+    display: inline-block;
+    font-size:24px;
+    margin-top:0px;
+  }
+
+  #yelp-link {
+    margin-left: 20px;
+    font-size:20px;
+    display:inline-block;
+  }
+
+  .yelp_image{
+    height:250px;
+    width:250px;
+    border-radius:10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    overflow:hidden;
+  }
+
+  .yelp_image img{
+    height:100%;
+    width:100%
+  }
+
 }
 
-#yelp-link {
-  margin-left: 20px;
-  display:inline-block;
-}
+
 
 /* Maps/Directions */
 

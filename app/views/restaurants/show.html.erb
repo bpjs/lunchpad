@@ -2,10 +2,15 @@
   <div id="restaurant-info" class="col-sm-8">
     <div>
       <h1 id="name"><%= @restaurant.name %></h1>
-      <h2 id="address"><%= @restaurant.address %></h2>
       <h2 id="category">(<%= @restaurant.category %>)</h2>
+      <h2 id="address"><%= @restaurant.address %></h2>
     </div>
     <div>
+      <div class="yelp_image">
+        <% if @restaurant.image_url %>
+          <img src=<%= @restaurant.image_url %>></img>
+        <% end %>
+      </div>
       <h3 id="review-average"> <%= @restaurant.review_average %></h3>
       <h4 id="yelp-link"><%= link_to "View on Yelp", @restaurant.yelp_url %></h4>
     </div>
