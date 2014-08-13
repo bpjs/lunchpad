@@ -1,21 +1,7 @@
-<div id="communities-list">
-  <% @communities.each do |community| %>
-
-    <div class="community">
-      <h1 class="community-name"><%= link_to community.name, community %></h1>
-      <% if member_signed_in? %>
-        <% if current_member.communities.include?(community) %>
-          <h3 class="member-of-community">Member</h3>
-          <%= button_to 'Leave Community', member_leave_community_path(current_member, community), class: "btn btn-success leave-community" %>
-        <% else %>
-          <%= button_to 'Join Community', member_join_community_path(current_member, community), class: "btn btn-success join-community" %>
-        <% end %>
-      <% end %> <!-- end member_signed_in? -->
-    </div>
-
-  <% end %> <!-- end @communities.each -->
+<div id="communities-list" class="row">
+  <%= render @communities %>
 </div>
 
 <% if member_signed_in? %>
-  <%= button_to 'New Community', new_community_path, method: :get, class: "btn btn-lg btn-primary" %>
+  <%= button_to 'Create a New Community', new_community_path, method: :get, class: "btn btn-lg btn-success" %>
 <% end %>
