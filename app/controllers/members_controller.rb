@@ -27,9 +27,15 @@ class MembersController < ApplicationController
 
   def join_community
     @new_community = Community.find(params[:community_id])
-    @member.community = @new_community
+    @member.member_communities.build(community: @new_community)
     @member.save
     redirect_to @new_community
+  end
+
+  def leave_community
+    @member.member_communities.find_by(params[:community_id]).delete
+    @member.save
+    redirect_to root_path
   end
 
   def join_group

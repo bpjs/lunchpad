@@ -1,6 +1,6 @@
 <h2> Hello <%= current_member.name%> </h2>
 
-<h3> You belong to the following communities: <%= @member.community.name %> </h3>
+<h3> You belong to the following communities: <%= @member.communities.map{ |community| link_to(community.name, community) }.to_sentence %> </h3>
 
 <p> You have recommended/discouraged trying out the following restaurants: </p>
   <% @member.reviews.each do |rev| %>

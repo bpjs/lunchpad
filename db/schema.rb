@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813012402) do
+ActiveRecord::Schema.define(version: 20140813155427) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -33,9 +33,18 @@ ActiveRecord::Schema.define(version: 20140813012402) do
   add_index "groups", ["community_id"], name: "index_groups_on_community_id"
   add_index "groups", ["restaurant_id"], name: "index_groups_on_restaurant_id"
 
+  create_table "member_communities", force: true do |t|
+    t.integer  "member_id"
+    t.integer  "community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "member_communities", ["community_id"], name: "index_member_communities_on_community_id"
+  add_index "member_communities", ["member_id"], name: "index_member_communities_on_member_id"
+
   create_table "members", force: true do |t|
     t.string   "name"
-    t.integer  "community_id",           default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
@@ -51,7 +60,6 @@ ActiveRecord::Schema.define(version: 20140813012402) do
     t.integer  "group_id"
   end
 
-  add_index "members", ["community_id"], name: "index_members_on_community_id"
   add_index "members", ["email"], name: "index_members_on_email", unique: true
   add_index "members", ["group_id"], name: "index_members_on_group_id"
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true

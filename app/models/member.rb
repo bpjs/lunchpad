@@ -3,7 +3,8 @@ class Member < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :community
+  has_many :member_communities
+  has_many :communities, through: :member_communities
   belongs_to :group
   has_many :reviews
 end

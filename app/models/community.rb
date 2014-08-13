@@ -1,7 +1,8 @@
 class Community < ActiveRecord::Base
   has_many :restaurants
-  has_many :members
   has_many :groups
+  has_many :member_communities
+  has_many :members, through: :member_communities
 
   validates_presence_of :name
   validate :validate_latitude_and_longitude

@@ -4,10 +4,11 @@
     <div class="community">
       <h1 class="community-name"><%= link_to community.name, community %></h1>
       <% if member_signed_in? %>
-        <% if current_member.community != community %>
-          <%= button_to 'Join Community', member_join_community_path(current_member, community), class: "btn btn-success join-community" %>
-        <% else current_member.community  %>
+        <% if current_member.communities.include?(community) %>
           <h3 class="member-of-community">Member</h3>
+          <%= button_to 'Leave Community', member_leave_community_path(current_member, community), class: "btn btn-success leave-community" %>
+        <% else %>
+          <%= button_to 'Join Community', member_join_community_path(current_member, community), class: "btn btn-success join-community" %>
         <% end %>
       <% end %> <!-- end member_signed_in? -->
     </div>
