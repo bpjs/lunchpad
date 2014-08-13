@@ -9,11 +9,13 @@ flatiron = Community.create(name: "Flatiron School", latitude: 40.705397, longit
 sophies = flatiron.restaurants.create(name: "Sophie's", category: "Cuban", yelp_url: "http://www.yelp.com/biz/sophies-cuban-cuisine-new-york-8", address: "73 New St", latitude: 40.705421, longitude: -74.012522, image_url: 'http://s3-media4.fl.yelpcdn.com/bphoto/MZowS0PsRVmOyn6yksjeTQ/l.jpg')
 chipotle = flatiron.restaurants.create(name: "Chipotle", category: "Mexican", yelp_url: "http://www.yelp.com/biz/chipotle-mexican-grill-new-york-30", address: "2 Broadway", latitude: 40.704499, longitude: -74.012825, image_url: 'http://s3-media4.fl.yelpcdn.com/bphoto/udIMvXLKSXt4NIQRSgY5_g/l.jpg')
 flavors = flatiron.restaurants.create(name: "Flavors", category: "Salad/Sandwiches", yelp_url: "http://www.yelp.com/biz/flavors-new-york", address: "27 Whitehall St", latitude: 40.704649, longitude: -74.011790, image_url: 'http://s3-media3.fl.yelpcdn.com/bphoto/cB6ieKowle5xPudpEW5jkg/l.jpg')
+yips = flatiron.restaurants.create(name: "Yips Restaurant", category: "Chinese", yelp_url: "http://www.yelp.com/biz/yips-restaurant-new-york", address: "18 Beaver St", latitude: 40.704994, longitude: -74.012389, image_url: 'http://s3-media4.fl.yelpcdn.com/bphoto/HJH5xf_bN2iPcxoQjYwn2w/l.jpg')
 
 brandon = flatiron.members.create(name: "Brandon Hopkins", email: "bh@foo.com", password: "password1234", password_confirmation: "password1234")
 peter = flatiron.members.create(name: "Peter Glennon", email: "pg@foo.com", password: "password1234", password_confirmation: "password1234")
 jess = flatiron.members.create(name: "Jess Rudder", email: "jr@foo.com", password: "password1234", password_confirmation: "password1234")
 simon = flatiron.members.create(name: "Simon Seroussi", email: "ss@foo.com", password: "password1234", password_confirmation: "password1234")
+chris = flatiron.members.create(name: "Chris Callahan", email: "chris@foo.com", password: "password1234", password_confirmation: "password1234")
 
 brandon.reviews.create(restaurant: sophies, rating: 5, text: "Awesome Cuban food in huge portions--it takes a lot of willpower not to eat an entire meal in one sitting, rather than doing the responsible thing and saving half for dinner.")
 brandon.reviews.create(restaurant: chipotle, rating: 3, text: "Classic standby for when you leave the school without figuring out what you want for lunch.")
@@ -25,3 +27,5 @@ peter.reviews.create(restaurant: flavors, rating: 3, text: "My fallback lunch pl
 jess.reviews.create(restaurant: chipotle, rating: 4, text: "Sometimes you just gotta go to Chipotle.")
 
 simon.reviews.create(restaurant: chipotle, rating: 4, text: "They're super annoying (what's it called?).  Oh, the sneeze guard.  Assholes.")
+
+chris.reviews.create(restaurant: yips, rating: 4, text: "Great value, gotta love the ribs with black bean sauce. The two ladies who work there are super nice! :)")
