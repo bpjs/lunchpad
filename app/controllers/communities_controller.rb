@@ -27,7 +27,7 @@ class CommunitiesController < ApplicationController
   private
 
     def community_params
-      params.require(:community).permit(:name, :latitude, :longitude)
+      params.require(:community).permit(:name, :address)
     end
 
 end

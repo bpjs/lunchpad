@@ -1,8 +1,9 @@
-<% @communities.each do |community| %>
+<div id="communities-list">
+  <% @communities.each do |community| %>
 
-  <h1><%= link_to community.name, community %></h1><br><br>
+    <h1 class="community_name"><%= link_to community.name, community %></h1><br><br>
 
-<% end %>
+  <% end %>
+</div>
 
-<br><br>
-<%= link_to 'New', new_community_path %>
+<%= button_to 'New Community', new_community_path, method: :get, class: "btn btn-lg btn-primary" %>
