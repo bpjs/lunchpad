@@ -49,7 +49,7 @@ $(document).ready(function() {
       geocoder.geocode({address: streetAddress, componentRestrictions: locationComponents}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           location['latitude'] = results[0].geometry.location.k;
-          location['longitude'] = results[0].geometry.location.B;
+          location['longitude'] = results[0].geometry.location.A;
           appendToTable(restaurant, location, yelp_id);
         }
       });
