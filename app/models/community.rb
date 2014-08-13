@@ -12,6 +12,7 @@ class Community < ActiveRecord::Base
   end
 
   def address=(address)
+    binding.pry
     self.latitude, self.longitude = Geocoder.coordinates(address)
   end
 
