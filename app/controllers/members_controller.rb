@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :get_member, only: [:show, :edit, :destroy, :join_group, :leave_group]
+  before_action :get_member, except: [:new, :create, :update]
 
   def show
 
@@ -23,6 +23,13 @@ class MembersController < ApplicationController
 
   def destroy
 
+  end
+
+  def join_community
+    @new_community = Community.find(params[:community_id])
+    @member.community = @new_community
+    @member.save
+    redirect_to @new_community
   end
 
   def join_group

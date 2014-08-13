@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :members, except: [:index]
   resources :reviews, only: [:create, :edit, :update, :destroy]
 
+  post "/members/:id/join_community/:community_id", to: "members#join_community", as: "member_join_community"
+
   post "/members/:id/join_group/:group_id", to: "members#join_group", as: "member_join_group"
   post "/members/:id/leave_group", to: "members#leave_group", as: "member_leave_group"
 
