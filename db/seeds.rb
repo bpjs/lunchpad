@@ -23,7 +23,7 @@ amy = flatiron.members.create(name: "Amy Johnson", email: "amy@foo.com", passwor
 sophies_group = Group.create(time: "2000-01-01 12:40:00", community_id: 1, restaurant_id: 1)
 chipotle_group = Group.create(time: "2000-01-01 13:00:00", community_id: 1, restaurant_id: 2)
 flavors_group = Group.create(time: "2000-01-01 12:00:00", community_id: 1, restaurant_id: 3)
-yips_group = Group.create(time: "2000-01-01 12:20:00", community_id: 1, restaurant_id: 1)
+yips_group = Group.create(time: "2000-01-01 12:20:00", community_id: 1, restaurant_id: 4)
 
 brandon.reviews.create(restaurant: sophies, rating: 5, text: "Awesome Cuban food in huge portions--it takes a lot of willpower not to eat an entire meal in one sitting, rather than doing the responsible thing and saving half for dinner.")
 brandon.reviews.create(restaurant: chipotle, rating: 3, text: "Classic standby for when you leave the school without figuring out what you want for lunch.")
