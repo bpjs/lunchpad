@@ -19,6 +19,16 @@ chris = flatiron.members.create(name: "Chris Callahan", email: "chris@foo.com", 
 michael = flatiron.members.create(name: "Michael Loker", email: "michael@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 3)
 jacob = flatiron.members.create(name: "Jacob Barriaeult", email: "jacob@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 3)
 amy = flatiron.members.create(name: "Amy Johnson", email: "amy@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 2)
+ashley = flatiron.members.create(name: "Ashley Blewer", email: "ashley@foo.com", password: "password1234", password_confirmation: "password1234")
+rebecca = flatiron.members.create(name: "Rebecca Greenblatt", email: "rebecca@foo.com", password: "password1234", password_confirmation: "password1234")
+vanessa = flatiron.members.create(name: "Vanessa Dean", email: "vanessa@foo.com", password: "password1234", password_confirmation: "password1234")
+
+gf_at_flatiron = Community.create(name: "Gluten-Free Flatiron", latitude: flatiron.latitude, longitude: flatiron.longitude)
+
+dig_inn = gf_at_flatiron.restaurants.create(name: "Dig Inn Seasonal Market", category: "American (Traditional)", yelp_url: "http://www.yelp.com/biz/dig-inn-seasonal-market-new-york-5", address: "80 Pine St", latitude: 40.706108, longitude: -74.006815, image_url: "http://s3-media1.fl.yelpcdn.com/bphoto/9Ia1oQ9-ZQWFh7VCBmweRA/l.jpg")
+
+gf_at_flatiron.members << [peter, ashley, rebecca]
+gf_at_flatiron.save
 
 sophies_group = Group.create(time: "2000-01-01 12:40:00", community_id: 1, restaurant_id: 1)
 chipotle_group = Group.create(time: "2000-01-01 13:00:00", community_id: 1, restaurant_id: 2)
@@ -39,3 +49,18 @@ jess.reviews.create(restaurant: flavors, rating: 3, text: "The ingredients seem 
 simon.reviews.create(restaurant: chipotle, rating: 4, text: "They're super annoying (what's it called?).  Oh, the sneeze guard.  Assholes.")
 
 chris.reviews.create(restaurant: yips, rating: 4, text: "Great value, gotta love the ribs with black bean sauce. The two ladies who work there are super nice! :)")
+
+the_bluth_company = Community.create(name: "The Bluth Company", latitude: 33.6220717, longitude: -117.9249228)
+
+banana_stand = the_bluth_company.restaurants.create(name: "Bluth Banana Stand", category: "Frozen Bananas", latitude: 33.6202899, longitude: -117.925062)
+klimpys = the_bluth_company.restaurants.create(name: "Klimpy's", category: "Casual/Mediocre", latitude: 33.6198698, longitude: -117.9244449)
+burger_king = the_bluth_company.restaurants.create(name: "Burger King", category: "Fast Food", latitude: 33.6186957, longitude: -117.9197717)
+
+michael = the_bluth_company.members.create(name: "Michael Bluth", email: "michael@bluth.com", password: "password1234", password_confirmation: "password1234")
+gob = the_bluth_company.members.create(name: "Gob Bluth", email: "gob@bluth.com", password: "password1234", password_confirmation: "password1234")
+tobias = the_bluth_company.members.create(name: "Tobias Fünke", email: "mister_f@bluth.com", password: "password1234", password_confirmation: "password1234")
+kitty = the_bluth_company.members.create(name: "Kitty Sanchez", email: "kitty@bluth.com", password: "password1234", password_confirmation: "password1234")
+
+gob.reviews.create(restaurant: banana_stand, rating: 3, text: "No double dip?? C'mon!!")
+michael.reviews.create(restaurant: banana_stand, rating: 5, text: "Just check for money in the walls before burning it down.")
+tobias.reviews.create(restaurant: burger_king, rating: 5, text: "It's a wonderful restaurant.")
