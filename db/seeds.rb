@@ -32,7 +32,9 @@ brandon.reviews.create(restaurant: flavors, rating: 4, text: "Lots of variety. T
 peter.reviews.create(restaurant: sophies, rating: 4, text: "A little sketched out by the meat.")
 peter.reviews.create(restaurant: flavors, rating: 3, text: "My fallback lunch place.")
 
-jess.reviews.create(restaurant: chipotle, rating: 4, text: "Sometimes you just gotta go to Chipotle.")
+jess.reviews.create(restaurant: chipotle, rating: 4, text: "The line is intimidating at lunch time, but you can get through it in about 15 minutes.  Definitely worth it when you're craving some spicy food.")
+jess.reviews.create(restaurant: yips, rating: 2, text: "There were not a lot of options for vegetarians.  I did enjoy the free can of Mountain Dew included with the meal though.")
+jess.reviews.create(restaurant: flavors, rating: 3, text: "The ingredients seem nice, but every time I go I manage to make a horrible mix. I should stick to prefab salads.")
 
 simon.reviews.create(restaurant: chipotle, rating: 4, text: "They're super annoying (what's it called?).  Oh, the sneeze guard.  Assholes.")
 
