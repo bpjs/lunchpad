@@ -145,18 +145,24 @@ a:hover {
 
 }
 
+html{
+  min-height:100%;
+  position: relative;
+}
+body{
+  height:100%;
+  margin-bottom:-100px;
+}
+
 #footer {
 
-  html, body{
-    height:100%;
-  }
-
-  margin-top: 30px;
+  margin-top: 50px;
   background: white;
   padding: 15px 0px;
   text-align: center;
-  position:relative;
-  bottom:0;
+  bottom:-25px;
+  height:100px;
+  margin-bottom:-25px;
 
   .lead {
     font-size: 21px;
