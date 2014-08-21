@@ -48,8 +48,8 @@ $(document).ready(function() {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({address: streetAddress, componentRestrictions: locationComponents}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          location['latitude'] = results[0].geometry.location.k;
-          location['longitude'] = results[0].geometry.location.A;
+          location['latitude'] = results[0].geometry.location.lat();
+          location['longitude'] = results[0].geometry.location.lng();
           appendToTable(restaurant, location, yelp_id);
         }
       });

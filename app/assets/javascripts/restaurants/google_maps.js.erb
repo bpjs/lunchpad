@@ -1,6 +1,6 @@
 function loadRestMap(community, restaurant){
   function findCenter(startCoords, endCoords){
-    return [(startCoords.k + endCoords.k)/2, (startCoords.A + endCoords.A)/2]
+    return [(startCoords.lat() + endCoords.lat())/2, (startCoords.lng() + endCoords.lng())/2]
   }
 
   var directionsDisplay;
