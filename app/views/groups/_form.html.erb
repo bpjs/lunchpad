@@ -31,21 +31,29 @@
   </div>
 
   <script type="text/javascript">
-      var $timepicker = $('input[name="group[time]"]'),
-          inFiveHours = new Date(),
-          inTwentyMinutes = new Date();
+    function setTimePicker($timeField, startTime){
+      var $timepicker = $timeField,
+          inFiveHours = new Date();
       inFiveHours.setHours(new Date().getHours() + 5);
-      inTwentyMinutes.setMinutes(new Date().getMinutes() + 20);
       $timepicker.timepicker({
         'scrollDefault': 'now',
         'minTime': new Date(),
         'maxTime': inFiveHours,
         'step': 15
       });
-      $timepicker.timepicker('setTime', inTwentyMinutes);
+      $timepicker.timepicker('setTime', startTime);
       $timepicker.on('changeTime', function() {
         console.log('change');
         console.log($(this).val());
       });
+    };
+
+    inTwentyMinutes = new Date();
+    inTwentyMinutes.setMinutes(new Date().getMinutes() + 20);
+    setTimePicker($('#new_group input[name="group[time]"]'), inTwentyMinutes);
+    $(".group").each(function(index, group){
+      var groupTime = $(this).find(".group-time").text();
+      setTimePicker($(group).find('input[name="group[time]"]'), groupTime);
+    })
   </script>
 </div>
