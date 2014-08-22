@@ -62,5 +62,6 @@ gem 'figaro'
 gem 'will_paginate'
 gem 'jquery-historyjs'
 gem 'geocoder'
+gem 'mandrill-api'
 
 gem "bootstrap-sass", "~> 3.1.1"
