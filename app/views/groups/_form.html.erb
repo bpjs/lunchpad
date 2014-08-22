@@ -1,7 +1,7 @@
 <div id="new-group" class="row">
   <div class="col-sm-6">
     <h3>Create a new group:</h3>
-    <%= form_for [community, Group.new], html: {class: "form-horizontal"} do |f| %>
+    <%= form_for [community, Group.new], remote: true, html: {class: "form-horizontal"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
 
@@ -17,7 +17,7 @@
           <%= f.text_field :time, class: "form-control", placeholder: "Time" %>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="form-group col-sm-6">
           <%= f.text_area :info, class: "form-control", placeholder: "Extra Information" %>

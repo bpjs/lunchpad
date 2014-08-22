@@ -17,6 +17,11 @@ class GroupsController < ApplicationController
     redirect_to community_groups_path(@community)
   end
 
+  def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)
+  end
+
   def destroy
     @group = Group.find(params[:id])
   end

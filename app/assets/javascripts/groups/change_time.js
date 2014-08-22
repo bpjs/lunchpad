@@ -1,6 +1,14 @@
 $(function(){
-  $("#groups").on("click", ".group-time", function(){
+  $("#groups").on("click", ".group-time", function(e){
+    e.stopPropagation();
     $(this).hide();
-    $(this).closest(".group").find(".update-time").show();
+    var $updateTimeForm = $(this).closest(".group").find(".update-time");
+    $updateTimeForm.show();
+    $updateTimeForm.click(function(e){
+      e.stopPropagation();
+    });
+    $(document).click(function(){
+      $updateTimeForm.hide();
+    });
   })
 })

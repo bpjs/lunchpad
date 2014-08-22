@@ -1,0 +1,4 @@
+$groupTime = $("#group-<%= @group.id %>").find(".group-time")
+$groupTime.html("<%= @group.time %>")
+$groupTime.show();
+$groupTime.closest(".group").find(".update-time").hide();
