@@ -4,6 +4,7 @@
     <%= form_for [community, Group.new], remote: true, html: {class: "form-horizontal"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
+      <%= f.hidden_field :creator_id, value: current_member.id %>
 
       <div class="row">
         <div class="form-group col-sm-8">

@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:time, :info, :restaurant_id, :community_id)
+      params.require(:group).permit(:time, :info, :restaurant_id, :community_id, :creator_id)
     end
 
     def authenticate_member_of_community
