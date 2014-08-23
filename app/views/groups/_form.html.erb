@@ -4,6 +4,7 @@
     <%= form_for [community, Group.new], remote: true, html: {class: "form-horizontal"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
+      <%= f.hidden_field :creator_id, value: current_member.id %>
 
       <div class="row">
         <div class="form-group col-sm-8">
@@ -54,7 +55,7 @@
     setTimePicker($('#new_group input[name="group[time]"]'), inTwentyMinutes);
 
     //Setting up timepicker for hidden forms to change restaurant times
-    $(".group").each(function(index, group){
+    $(".current-member-group").each(function(index, group){
       var groupTime = $(this).find(".group-time").text().trim();
       var timeChangeForm = $(group).find('input[name="group[time]"]');
       var groupHour = groupTime.split(":")[0];
@@ -65,7 +66,6 @@
       };
       setTimePicker(timeChangeForm, groupTime);
     });
-
 
   </script>
 </div>
