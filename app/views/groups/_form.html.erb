@@ -48,12 +48,24 @@
       });
     };
 
+    // Setting up Date object set to 20 minutes from now for new group form
     inTwentyMinutes = new Date();
     inTwentyMinutes.setMinutes(new Date().getMinutes() + 20);
     setTimePicker($('#new_group input[name="group[time]"]'), inTwentyMinutes);
+
+    //Setting up timepicker for hidden forms to change restaurant times
     $(".group").each(function(index, group){
-      var groupTime = $(this).find(".group-time").text();
-      setTimePicker($(group).find('input[name="group[time]"]'), groupTime);
-    })
+      var groupTime = $(this).find(".group-time").text().trim();
+      var timeChangeForm = $(group).find('input[name="group[time]"]');
+      var groupHour = groupTime.split(":")[0];
+      var groupMinutes = groupTime.split(":")[1];
+      if(groupHour.length == 1){
+        console.log(groupHour);
+        groupTime = groupHour + ":" + groupMinutes + "pm";
+      };
+      setTimePicker(timeChangeForm, groupTime);
+    });
+
+
   </script>
 </div>
