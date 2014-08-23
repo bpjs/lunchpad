@@ -1,5 +1,5 @@
 $(function(){
-  $("#groups").on("click", ".group-time", function(e){
+  $("#groups").on("click", ".current-member-group .group-time", function(e){
     e.stopPropagation();
     $clickedTime = $(this)
     $(this).hide();

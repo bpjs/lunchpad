@@ -1,4 +1,4 @@
-<div id="group-<%= group.id %>" class="group col-sm-4">
+<div id="group-<%= group.id %>" class="group<%= " current-member-group" if group.creator == current_member %> col-sm-4">
   <h2 class="group-restaurant"><%= group.restaurant.name %>,</h2>
   <h3 class="group-time"><%= group.show_time %></h3>
   
