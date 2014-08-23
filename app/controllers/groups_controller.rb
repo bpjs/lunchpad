@@ -10,11 +10,13 @@ class GroupsController < ApplicationController
     if @group.save
       current_member.group = @group
       current_member.save
+      #Need to find a way to get flash messages to display on AJAX response
+      #Currently these do not display
       flash[:notice] = "Group successfully created."
     else
       flash[:alert] = "Error: Group must have a name and a time."
     end
-    redirect_to community_groups_path(@community)
+    # redirect_to community_groups_path(@community)
   end
 
   def update
