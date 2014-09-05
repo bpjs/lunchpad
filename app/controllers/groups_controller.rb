@@ -6,12 +6,15 @@ class GroupsController < ApplicationController
   end
 
   def create
+    binding.pry
     @group = Group.new(group_params)
     if @group.save
       current_member.group = @group
       current_member.save
       #Need to find a way to get flash messages to display on AJAX response
       #Currently these do not display
+      #For some reason select2 always submits one
+      InvitationMailer.new(params["invitee_ids"][1..-1])
       flash[:notice] = "Group successfully created."
     else
       flash[:alert] = "Error: Group must have a name and a time."

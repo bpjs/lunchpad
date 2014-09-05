@@ -4,6 +4,6 @@
   <%= render partial: "group", collection: @groups, locals: {community: @community} %>
 </div>
 
-<%= render 'form', community: @community %>
+<%= render 'form', community: @community, mailer: @mailer %>
 
 <%# TODO: There should be the ability to create a restaurant from here!! %>
