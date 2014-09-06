@@ -6,20 +6,21 @@ class GroupsController < ApplicationController
   end
 
   def create
-    binding.pry
     @group = Group.new(group_params)
     if @group.save
       current_member.group = @group
       current_member.save
+      #For some reason select2 always submits one empty string at the beginning of the array.
+      #Saw some possible fixes online, but did not work
+      #Will keep trying to figure this out
+      mailer = InvitationMailer.new(params["invitee_ids"][1..-1], @group) if params["invitee_ids"].length > 1
+      mailer.send_invitations
       #Need to find a way to get flash messages to display on AJAX response
       #Currently these do not display
-      #For some reason select2 always submits one
-      InvitationMailer.new(params["invitee_ids"][1..-1])
       flash[:notice] = "Group successfully created."
     else
       flash[:alert] = "Error: Group must have a name and a time."
     end
-    # redirect_to community_groups_path(@community)
   end
 
   def update

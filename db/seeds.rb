@@ -16,9 +16,9 @@ chipotle_group = Group.create(time: "2000-01-01 13:00:00", community_id: 1, rest
 flavors_group = Group.create(time: "2000-01-01 12:00:00", community_id: 1, restaurant_id: 3)
 yips_group = Group.create(time: "2000-01-01 12:20:00", community_id: 1, restaurant_id: 4)
 
-brandon = flatiron.members.create(name: "Brandon Hopkins", email: "bh@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 1)
-peter = flatiron.members.create(name: "Peter Glennon", email: "pg@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 1)
-jess = flatiron.members.create(name: "Jess Rudder", email: "jr@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 2)
+brandon = flatiron.members.create(name: "Brandon Hopkins", email: "br@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 1)
+peter = flatiron.members.create(name: "Peter Glennon", email: "omm.sety@gmail.com", password: "password1234", password_confirmation: "password1234", group_id: 1)
+jess = flatiron.members.create(name: "Jess Rudder", email: "brhpkns@gmail.com", password: "password1234", password_confirmation: "password1234", group_id: 2)
 simon = flatiron.members.create(name: "Simon Seroussi", email: "ss@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 1)
 chris = flatiron.members.create(name: "Chris Callahan", email: "chris@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 4)
 michael = flatiron.members.create(name: "Michael Loker", email: "michael@foo.com", password: "password1234", password_confirmation: "password1234", group_id: 3)
