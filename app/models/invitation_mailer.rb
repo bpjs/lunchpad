@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class InvitationMailer
 
   attr_reader :mailer, :invitee_vars, :to_array, :global_vars
