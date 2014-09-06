@@ -48,6 +48,14 @@ class MembersController < ApplicationController
     @member.save
   end
 
+  def join_group_from_email
+    join_group
+    @group = Group.find(params[:group_id])
+    @community = Community.find(@group.community.id)
+    flash[:notice] = "You joined the group going to #{@group.restaurant.name} at #{@group.show_time}"
+    redirect_to community_groups_path(@community, @group)
+  end
+
   def leave_group
     @old_group = @member.group
     @member.group = nil

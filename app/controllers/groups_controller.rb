@@ -16,10 +16,9 @@ class GroupsController < ApplicationController
       mailer = InvitationMailer.new(params["invitee_ids"][1..-1], @group) if params["invitee_ids"].length > 1
       mailer.send_invitations
       #Need to find a way to get flash messages to display on AJAX response
-      #Currently these do not display
-      flash[:notice] = "Group successfully created."
+      #flash[:notice] = "Group successfully created."
     else
-      flash[:alert] = "Error: Group must have a name and a time."
+      #flash[:alert] = "Error: Group must have a name and a time."
     end
   end
 

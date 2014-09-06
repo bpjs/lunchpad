@@ -29,7 +29,6 @@ class InvitationMailer
       "to" => to_array
     }
     result = @mailer.messages.send_template('lunchpad_invitation', [], message)
-    binding.pry
   end
 
 end
