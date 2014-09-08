@@ -35,6 +35,23 @@ If you've made a decision about where you're going to eat, you can head to the L
 - Jessica Rudder -  github: https://github.com/jessrudder,   twitter: @JessRudder
 - Simon Seroussi - github: https://github.com/simonseroussi, twitter: @simonseroussi
 
+## A Note on Forking
+
+We use [figaro](https://github.com/laserlemon/figaro) to keep our Yelp API stuff out of source control.  When forking/cloning, follow these steps:
+ - run `bundle`, as usual
+ - comment out all code in config/initializers/yelp.rb
+ - run `rails g figaro:install`
+ - in the config/application.yml file created by figaro, insert your Yelp API credentials in this format:
+
+   ```ruby
+   YELP_CONSUMER_KEY: your_consumer_key
+   YELP_CONSUMER_SECRET: your_consumer_secret
+   YELP_TOKEN: your_token
+   YELP_TOKEN_SECRET: your_token_secret
+   ```
+
+- un-comment the code in config/initializers/yelp.rb
+
 ## License
 
 Local Lunch is MIT Licensed. See LICENSE for details.
