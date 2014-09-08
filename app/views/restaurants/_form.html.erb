@@ -1,11 +1,14 @@
-<%= form_tag("/search", method: "get", id: "restaurant_search", class: "form-inline") do %>
+<%= form_tag("/search", method: "get", id: "restaurant_search") do %>
   <%= hidden_field_tag "latitude", @community.latitude %>
   <%= hidden_field_tag "longitude", @community.longitude %>
-  <div class="form-group">
-    <%= label_tag :name, "Add a Local Restaurant:" %>
-    <%= text_field_tag :name, "", class: "form-control" %>
+  <div class="row">
+    <div class="form-group col-sm-7">
+      <%= text_field_tag :name, "", class: "form-control", placeholder: "Add a local restaurant" %>
+    </div>
+    <div class="col-sm-3">
+      <%= submit_tag("Search Yelp", :id=>'restaurant_search', :class=>'btn btn-primary', 'data-toggle'=>"modal", 'data-target'=>'#myModal') %>
+    </div>
   </div>
-  <%= submit_tag("Search", :id=>'restaurant_search', :class=>'btn btn-primary', 'data-toggle'=>"modal", 'data-target'=>'#myModal') %>
 <% end %>
 
 

@@ -1,21 +1,22 @@
-<h1><%= @community.name %></h1>
-
-<div class="row">
-  <div id="community-map" class="col-sm-6">
-    <div id="map-canvas"></div>
-  </div>
-
-  <div id="restaurant-list" class="col-sm-6">
-    <%= render 'page', restaurants: @restaurants %>
-  </div>
-
+<div id="community-header" class="row">
+  <h1 class="name"><%= @community.name %></h1>
 </div>
 
 <div class="row">
-  <div id="new_restaurant_selection" class="col-sm-6 col-sm-offset-6">
-    <% if member_signed_in? %>
-      <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
-    <% end %>
+  <div class="col-sm-7">
+    <div id="restaurant-list">
+      <%= render 'page', restaurants: @restaurants %>
+    </div>
+    <%= render 'restaurants/form', restaurant: Restaurant.new(community_id: @community.id) %>
+  </div>
+
+  <div id="community-map" class="col-sm-5">
+    <div id="map-canvas"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-7">
   </div>
 </div>
 
