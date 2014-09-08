@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    @restaurants = Restaurant.by_average_rating_for_community(@community.id).paginate(:per_page => 4, :page => params[:page])
+    @restaurants = Restaurant.by_average_rating_for_community(@community.id).paginate(:page => params[:page], :per_page => 8)
   end
 
   def new
