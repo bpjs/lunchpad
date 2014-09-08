@@ -1,9 +1,8 @@
-<h2>Restaurants in your community</h2>
 <% restaurants.each do |restaurant| %>
-<div id="restaurant-<%= restaurant.id %>">
-  <h3 class="restaurant-name"><%= link_to restaurant.name, restaurant %></h3>
-  <h5 class="restaurant-category">(<%= restaurant.category %>)</h5>
-  <h5 class="restaurant-address"><%= restaurant.address %></h5>
-</div>
+  <div id="restaurant-<%= restaurant.id %>" class="restaurant">
+    <h3 class="name"><%= link_to restaurant.name, restaurant %></h3>
+    <h5 class="category">(<%= restaurant.category %>)</h5>
+    <h5 class="address"><%= restaurant.address %></h5>
+  </div>
 <% end %>
 <%= will_paginate restaurants, params: {is_active: true} %>
