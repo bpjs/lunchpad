@@ -10,11 +10,18 @@ class GroupsController < ApplicationController
     if @group.save
       current_member.group = @group
       current_member.save
+      #Need to find a way to get flash messages to display on AJAX response
+      #Currently these do not display
       flash[:notice] = "Group successfully created."
     else
       flash[:alert] = "Error: Group must have a name and a time."
     end
-    redirect_to community_groups_path(@community)
+    # redirect_to community_groups_path(@community)
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)
   end
 
   def destroy
@@ -28,7 +35,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:time, :info, :restaurant_id, :community_id)
+      params.require(:group).permit(:time, :info, :restaurant_id, :community_id, :creator_id)
     end
 
     def authenticate_member_of_community

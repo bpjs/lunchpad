@@ -1,4 +1,4 @@
-$('#group-<%= @new_group.id %>').replaceWith('<%= j render @new_group %>');
+$('#group-<%= @new_group.id %>').replaceWith('<%= j render partial: "groups/group", locals: {group: @new_group, community: @new_group.community} %>');
 <% if @old_group %>
-  $('#group-<%= @old_group.id %>').replaceWith('<%= j render @old_group %>');
+  $('#group-<%= @old_group.id %>').replaceWith('<%= j render partial: "groups/group", locals: {group: @old_group, community: @old_group.community} %>');
 <% end %>

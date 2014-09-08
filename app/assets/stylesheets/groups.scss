@@ -6,8 +6,25 @@
   display: inline;
 }
 
-.group-time {
+.current-member-group .group-time {
   margin-left: 5px;
+  cursor:pointer;
+}
+
+.update-time {
+  height:33px;
+  display:inline-block;
+}
+
+.update-time input {
+  height:33px;
+  width:74px;
+}
+
+.current-member-group .group-time{
+  border:1px solid black;
+  padding:0px 8px;
+  border-radius:10px;
 }
 
 .group-info {

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require groups/change_time
 //= require communities/google_maps
 //= require restaurants/google_maps
 //= require restaurants/geocoder

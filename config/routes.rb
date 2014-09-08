@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :communities, only: [:show, :index, :new, :create] do
     resources :restaurants, only: [:create]
-    resources :groups, only: [:index, :create]
+    resources :groups, only: [:index, :create, :update]
   end
   resources :restaurants, only: [:show, :destroy]
   resources :groups, only: [:destroy]

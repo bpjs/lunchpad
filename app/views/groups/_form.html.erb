@@ -1,9 +1,10 @@
 <div id="new-group" class="row">
   <div class="col-sm-6">
     <h3>Create a new group:</h3>
-    <%= form_for [community, Group.new], html: {class: "form-horizontal"} do |f| %>
+    <%= form_for [community, Group.new], remote: true, html: {class: "form-horizontal"} do |f| %>
 
       <%= f.hidden_field :community_id, value: community.id %>
+      <%= f.hidden_field :creator_id, value: current_member.id %>
 
       <div class="row">
         <div class="form-group col-sm-8">
@@ -31,21 +32,40 @@
   </div>
 
   <script type="text/javascript">
-    var $timepicker = $('#group_time'),
-        inFiveHours = new Date(),
-        inTwentyMinutes = new Date();
-    inFiveHours.setHours(new Date().getHours() + 5);
+    function setTimePicker($timeField, startTime){
+      var $timepicker = $timeField,
+          inFiveHours = new Date();
+      inFiveHours.setHours(new Date().getHours() + 5);
+      $timepicker.timepicker({
+        'scrollDefault': 'now',
+        'minTime': new Date(),
+        'maxTime': inFiveHours,
+        'step': 15
+      });
+      $timepicker.timepicker('setTime', startTime);
+      $timepicker.on('changeTime', function() {
+        console.log('change');
+        console.log($(this).val());
+      });
+    };
+
+    // Setting up Date object set to 20 minutes from now for new group form
+    inTwentyMinutes = new Date();
     inTwentyMinutes.setMinutes(new Date().getMinutes() + 20);
-    $timepicker.timepicker({
-      'scrollDefault': 'now',
-      'minTime': new Date(),
-      'maxTime': inFiveHours,
-      'step': 15
+    setTimePicker($('#new_group input[name="group[time]"]'), inTwentyMinutes);
+
+    //Setting up timepicker for hidden forms to change restaurant times
+    $(".current-member-group").each(function(index, group){
+      var groupTime = $(this).find(".group-time").text().trim();
+      var timeChangeForm = $(group).find('input[name="group[time]"]');
+      var groupHour = groupTime.split(":")[0];
+      var groupMinutes = groupTime.split(":")[1];
+      if(groupHour.length == 1){
+        console.log(groupHour);
+        groupTime = groupHour + ":" + groupMinutes + "pm";
+      };
+      setTimePicker(timeChangeForm, groupTime);
     });
-    $timepicker.timepicker('setTime', inTwentyMinutes);
-    $timepicker.on('changeTime', function() {
-      console.log('change');
-      console.log($(this).val());
-    });
+
   </script>
 </div>
