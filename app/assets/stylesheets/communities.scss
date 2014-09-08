@@ -1,6 +1,5 @@
 // Index Page
 
-
 #communities-list {
 
   margin-bottom: 50px;
@@ -56,36 +55,50 @@
   }
 }
 
+
+
 // New form
 
 #new_community {
   margin-top: 30px;
 }
 
+
+
 // Show Page
 
+#community-header {
+  .name {
+
+  }
+}
+
 #community-map {
-  height: 500px;
+  height: 400px;
 }
 
-#restaurant-list{
-  margin-bottom: 50px
-}
+#restaurant-list {
 
-#restaurant-list h4 {
-  margin-bottom: 30px;
-}
+  margin-bottom: 50px;
+  min-height: 400px;
 
-#restaurant-list h3 {
-  margin-bottom: 0px;
-}
+  .restaurant {
+    .name {
+      display: inline-block;
+    }
 
-#restaurant-list .restaurant-name {
-  display: inline-block;
-}
+    .category {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
 
-#restaurant-list .restaurant-category {
-  display: inline-block;
-  margin-left: 10px;
-}
+  .pagination {
 
+    margin-top: 35px;
+
+    li a, li span {
+      background-color: #f5fafa;
+    }
+  }
+}
