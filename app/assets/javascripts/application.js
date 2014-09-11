@@ -17,6 +17,7 @@
 //= require restaurants/geocoder
 //= require restaurants/restaurant_finder
 //= require reviews/form
+//= require select2
 //= require jquery_ujs
 //= require bootstrap.min
 //= require jquery.raty
