@@ -63,5 +63,6 @@ gem 'will_paginate'
 gem 'jquery-historyjs'
 gem 'geocoder'
 gem 'mandrill-api'
+gem 'select2-rails'
 
 gem "bootstrap-sass", "~> 3.1.1"

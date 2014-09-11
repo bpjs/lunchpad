@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823144600) do
+ActiveRecord::Schema.define(version: 20140905143533) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20140823144600) do
 
   add_index "groups", ["community_id"], name: "index_groups_on_community_id"
   add_index "groups", ["restaurant_id"], name: "index_groups_on_restaurant_id"
+
+  create_table "invitations", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "group_id"
+    t.integer  "invitee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "member_communities", force: true do |t|
     t.integer  "member_id"

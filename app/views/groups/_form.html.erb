@@ -25,6 +25,13 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="_invitee_ids">Invite Friends!</label>
+          <%= collection_select(nil, :invitee_ids, other_members_of_community(community), :id, :name, {include_blank: true}, {class: "form-control", multiple: true}) %>
+        </div>
+      </div>
+
       <div class="form-group">
         <%= f.submit "Submit", class: "btn btn-primary" %>
       </div>
@@ -32,22 +39,27 @@
   </div>
 
   <script type="text/javascript">
-    function setTimePicker($timeField, startTime){
-      var $timepicker = $timeField,
-          inFiveHours = new Date();
-      inFiveHours.setHours(new Date().getHours() + 5);
-      $timepicker.timepicker({
-        'scrollDefault': 'now',
-        'minTime': new Date(),
-        'maxTime': inFiveHours,
-        'step': 15
-      });
-      $timepicker.timepicker('setTime', startTime);
-      $timepicker.on('changeTime', function() {
-        console.log('change');
-        console.log($(this).val());
-      });
-    };
+
+  $(function(){
+    $('#_invitee_ids').select2();
+  });
+
+  function setTimePicker($timeField, startTime){
+    var $timepicker = $timeField,
+        inFiveHours = new Date();
+    inFiveHours.setHours(new Date().getHours() + 5);
+    $timepicker.timepicker({
+      'scrollDefault': 'now',
+      'minTime': new Date(),
+      'maxTime': inFiveHours,
+      'step': 15
+    });
+    $timepicker.timepicker('setTime', startTime);
+    $timepicker.on('changeTime', function() {
+      console.log('change');
+      console.log($(this).val());
+    });
+  };
 
     // Setting up Date object set to 20 minutes from now for new group form
     inTwentyMinutes = new Date();
