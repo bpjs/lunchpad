@@ -1,17 +1,19 @@
-<div id="group-<%= group.id %>" class="group<%= " current-member-group" if group.creator == current_member %> col-sm-4">
+<!-- <div id="group-<%#= group.id %>" class="group<%#= " current-member-group" if group.creator == current_member %> col-sm-4"> -->  <!-- Not fully implemented -->
+<div id="group-<%= group.id %>" class="group col-sm-4">
   <h2 class="group-restaurant"><%= group.restaurant.name %>,</h2>
   <h3 class="group-time"><%= group.show_time %></h3>
-  
-  <% if group.creator == current_member %>
-    <div class="update-time">
-      <%= form_for [community, group], remote: true, html: {class: "form-horizontal"} do |f| %>
-        <%= f.hidden_field :community_id, value: community.id %>
-        <div class="form-group col-sm-3">
-          <%= f.text_field :time, class: "form-control", placeholder: "Time" %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+
+  <!-- Not fully implemented -->
+  <%# if group.creator == current_member %>
+    <!-- <div class="update-time"> -->
+      <%#= form_for [community, group], remote: true, html: {class: "form-horizontal"} do |f| %>
+        <%#= f.hidden_field :community_id, value: community.id %>
+        <!-- <div class="form-group col-sm-3"> -->
+          <%#= f.text_field :time, class: "form-control", placeholder: "Time" %>
+        <!-- </div> -->
+      <%# end %>
+    <!-- </div> -->
+  <%# end %>
 
   <h4 class="group-info"><%= group.info %></h4>
   <div class="group-members">
@@ -35,8 +37,9 @@
   </div>
 </div>
 
+<!-- Not fully implemented -->
 <script type="text/javascript">
-  $(function(){
-    $(".update-time").hide();
-  })
+//   $(function(){
+//     $(".update-time").hide();
+//   })
 </script>
